@@ -7,4 +7,4 @@ on:
 jobs:
   run_tests:
     uses: alexey-ban/ai-dial-ci/.github/workflows/test.yml@main
-    secrets: inherit
+    secrets: inherit 
