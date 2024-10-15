@@ -99,7 +99,8 @@ jobs:
       - name: Upgrade Helm Chart
         run: |
           HELM_VALUES_FILE="${{ inputs.helm_values_file }}"
-          helm upgrade ${{ inputs.helm_release_name }} ${{ inputs.helm_repo_name }}/${{ inputs.helm_release_name }}
+
+          helm upgrade ${{ inputs.helm_release_name }} ${{ inputs.helm_repo_name }}/${{ inputs.helm_release_name }} \
             --version ${{ inputs.helm_chart_version }} \
             --namespace  ${{ inputs.k8s_namespace }} \
             --install --wait ${HELM_VALUES_FILE:+--values "$HELM_VALUES_FILE"} \
