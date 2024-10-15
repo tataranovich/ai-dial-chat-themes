@@ -5,6 +5,11 @@ on:
     branches: [development, release-*]
 
 jobs:
-  run_tests:
-    uses: alexey-ban/ai-dial-ci/.github/workflows/test.yml@main
-    secrets: inherit 
+  # run_tests:
+  #   uses: alexey-ban/ai-dial-ci/.github/workflows/test.yml@main
+  #   secrets: inherit 
+
+    test:
+      uses: ./.github/workflows/helm_deploy.yml
+      with:
+        k8s_namespace: ab-test
