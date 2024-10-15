@@ -1,2 +1,4 @@
 core:
   enabled: false
+chat:
+  enabled: false
