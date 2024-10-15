@@ -13,3 +13,4 @@ jobs:
       uses: ./.github/workflows/helm_deploy.yml
       with:
         k8s_namespace: ab-test
+        helm_values_file: "./build/helm/review.yaml"
