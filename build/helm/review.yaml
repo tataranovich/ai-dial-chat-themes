@@ -1,8 +1,17 @@
 global:
   # url: ai-dial-themes-pr-5.gke.test.epam-rail.com
-  name: dial
 
 extraDeploy:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: core-config-git
+      namespace: "{{ .Release.Namespace }}"
+    data:
+      # get content from --set-file
+      aidial.config.json: |
+        {{- .Values.core.extraConfig | nindent 4 }}
+
   - apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -80,7 +89,6 @@ extraDeploy:
           - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-bedrock-aws-secret-access-key/versions/latest"
             path: "aws-secret-access-key"
 
-
 chat:
   enabled: true
   image:
@@ -92,7 +100,7 @@ chat:
   env:
     NEXTAUTH_URL: "https://chat-{{ .Values.global.url }}"
     KEEP_ALIVE_TIMEOUT: "61000"
-    DIAL_API_HOST: "http://{{ .Values.global.name }}-core"
+    DIAL_API_HOST: "http://dial-core"
     DEFAULT_MODEL: "gpt-35-turbo"
     NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT: ""
     ENABLED_FEATURES: "conversations-section,prompts-section,top-settings,top-clear-conversation,top-chat-info,top-chat-model-settings,empty-chat-settings,header,footer,request-api-key,report-an-issue,likes,conversations-sharing,prompts-sharing,input-files,attachments-manager,conversations-publishing,prompts-publishing,custom-logo,input-links,custom-applications,message-templates,marketplace,quick-apps"
@@ -135,7 +143,7 @@ core:
     encryption:
       existingSecret: dial-core-encryption
   env:
-    aidial.config.files: '["/mnt/secrets-store/aidial.config.json"]'
+    aidial.config.files: '["/mnt/secrets-store/aidial.config.json","/mnt/config-git/aidial.config.json"]'
     # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo
     # aidial.identityProviders.auth0.issuerPattern: '^https:\/\/chatbot-ui-staging\.eu\.auth0\.com.+$' # ToDo
     # aidial.identityProviders.auth0.rolePath: "dial_roles" # ToDo
@@ -151,6 +159,9 @@ core:
     GOOGLE_APPLICATION_CREDENTIALS: "/etc/workload-identity/credential-configuration.json"
 
   extraVolumes:
+    - name: extraconfig-git
+      configMap:
+        name: core-config-git
     - name: secrets
       csi:
         driver: secrets-store.csi.k8s.io
@@ -168,6 +179,8 @@ core:
       configMap:
         name: gcp-cred-dial-core
   extraVolumeMounts:
+    - name: extraconfig-git
+      mountPath: "/mnt/config-git"
     - name: secrets
       mountPath: "/mnt/secrets-store"
       readOnly: true
@@ -210,7 +223,7 @@ bedrock:
   extraEnvVarsSecret: dial-bedrock-creds
   env:
     AWS_DEFAULT_REGION: "us-east-1"
-    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    DIAL_URL: "http://dial-core"
     # OTEL_PYTHON_LOG_CORRELATION: "true"
     # OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: "/health"
     # OTEL_LOGS_EXPORTER: "otlp"
@@ -227,7 +240,7 @@ vertexai:
     repository: epam/ai-dial-adapter-vertexai
     tag: development
   env:
-    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    DIAL_URL: "http://dial-core"
     GOOGLE_APPLICATION_CREDENTIALS: "/etc/workload-identity/credential-configuration.json"
     GCP_PROJECT_ID: "hl2-epm-dial-test-t1iylu"
     DEFAULT_REGION: "us-central1"
@@ -286,7 +299,7 @@ openai:
     tag: development
   env:
     DIAL_USE_FILE_STORAGE: "true"
-    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    DIAL_URL: "http://dial-core"
     GPT4_VISION_DEPLOYMENTS: "gpt-4-vision-preview"
     GPT4O_DEPLOYMENTS: "gpt-4o-2024-05-13,gpt-4o-mini-2024-07-18,gpt-4o-2024-08-06"
     DALLE3_DEPLOYMENTS: "dall-e-3"
@@ -309,7 +322,7 @@ dial:
     tag: development
   # fullnameOverride: "dial-adapter-dial" # ???
   env:
-    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    DIAL_URL: "http://dial-core"
 
 assistant:
   enabled: false
@@ -319,7 +332,7 @@ assistant:
     repository: epam/ai-dial-assistant
     tag: development
   env:
-    OPENAI_API_BASE: "http://{{ .Values.global.name }}-core"
+    OPENAI_API_BASE: "http://dial-core"
     TOOLS_SUPPORTING_DEPLOYMENTS: "gpt-4-1106-preview,anthropic.claude-v2-1"
 
 themes:
