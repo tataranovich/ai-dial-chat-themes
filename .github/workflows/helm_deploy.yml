@@ -109,5 +109,5 @@ jobs:
           helm upgrade ${{ inputs.helm_release_name }} ${{ inputs.helm_repo_name }}/${{ inputs.helm_release_name }} \
             --version ${{ inputs.helm_chart_version }} \
             --namespace  ${{ inputs.k8s_namespace }} \
-            --install --create-namespace --wait ${HELM_VALUES_FILE:+--values "$HELM_VALUES_FILE"} ${HELM_VALUES_FILE:+--set "$HELM_VALUES_FILE"} \
+            --install --create-namespace --wait ${HELM_VALUES_FILE:+--values "$HELM_VALUES_FILE"} ${HELM_VALUES:+--set "$HELM_VALUES"} \
             ${{ inputs.helm_extra_args }}
