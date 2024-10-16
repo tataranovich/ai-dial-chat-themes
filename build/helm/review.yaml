@@ -323,7 +323,7 @@ themes:
   image:
     pullPolicy: Always
     registry: ghcr.io
-    repository: epam/ai-dial-assistant
+    repository: epam/ai-dial-chat-themes
     tag: development
   podAnnotations:
     autorestart: '{{ dateInZone "2006-01-02 15:04:05Z" (now) "UTC" }}'
