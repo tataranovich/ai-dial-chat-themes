@@ -82,7 +82,7 @@ extraDeploy:
 
 
 chat:
-  enabled: false
+  enabled: true
   image:
     pullPolicy: Always
     registry: ghcr.io
@@ -98,9 +98,9 @@ chat:
     NEXT_PUBLIC_APP_NAME: "EPAM AI DIAL - Review"
     THEMES_CONFIG_HOST: "https://themes-{{ .Values.global.url }}"
     RECENT_MODELS_IDS: "gpt-35-turbo,gpt-4"
-    AUTH_AUTH0_HOST: "https://chatbot-ui-staging.eu.auth0.com"  # ToDO
-    AUTH_AUTH0_NAME: "Auth0 SSO"
-    AUTH_AUTH0_AUDIENCE: "chat"
+    # AUTH_AUTH0_HOST: "https://chatbot-ui-staging.eu.auth0.com"  # ToDO
+    # AUTH_AUTH0_NAME: "Auth0 SSO"
+    # AUTH_AUTH0_AUDIENCE: "chat"
     ANNOUNCEMENT_HTML_MESSAGE: 'Welcome to <a href="about:blank" target="_blank">AI Dial</a>! Unified AI Access for Enterprises. Secure, scalable and customizable enterprise-grade AI ecosystem that seamlessly integrates with your data and workflows, tailored to achieve your unique business objectives.'
     # TRACES_URL: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4318/v1/traces" # ToDO
   resources:
@@ -120,7 +120,8 @@ chat:
     tls:
       - secretName: "chat-tls-secret"
         hosts:
-          - "chat-{{ .Values.global.url }}"
+          - "chat-ai-dial-themes-pr-1.gke.test.epam-rail.com"
+          #- "chat-{{ .Values.global.url }}"
 
 core:
   enabled: true
