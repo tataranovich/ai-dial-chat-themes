@@ -23,8 +23,8 @@
             "type": "chat",
             "displayName": "Gemini 1.0 Pro",
             "iconUrl": "Gemini.svg",
-            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions",
-        }        
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions"
+        }
     },
     "roles": {
         "chat": {
@@ -36,7 +36,7 @@
                 "gemini-1.0-pro": {
                     "minute": "64000",
                     "day": "1000000"
-                }            
+                }
             }
         }
     }
