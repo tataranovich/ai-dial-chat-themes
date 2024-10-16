@@ -123,7 +123,7 @@ chat:
           - "chat-{{ .Values.global.url }}"
 
 core:
-  enabled: false
+  enabled: true
   image:
     pullPolicy: Always
     registry: ghcr.io
