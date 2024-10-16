@@ -232,7 +232,7 @@ bedrock:
     # OTEL_RESOURCE_ATTRIBUTES: "service.name=dial-bedrock"
 
 vertexai:
-  enabled: false
+  enabled: true
   image:
     pullPolicy: Always
     registry: ghcr.io
@@ -254,7 +254,7 @@ vertexai:
     - apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: gcp-cred
+        name: gcp-cred-dial-vertexai
       data:
         credential-configuration.json: |
           {
@@ -280,7 +280,7 @@ vertexai:
               path: token
     - name: workload-identity-credential-configuration
       configMap:
-        name: gcp-cred
+        name: gcp-cred-dial-vertexai
   extraVolumeMounts:
     - name: token
       mountPath: "/var/run/service-account"
