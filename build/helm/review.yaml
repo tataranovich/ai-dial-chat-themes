@@ -1,4 +1,5 @@
 global:
+  url: ai-dial-themes-pr-5.gke.test.epam-rail.com
   name: dial
 
 extraDeploy:
