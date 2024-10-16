@@ -1,5 +1,5 @@
-global:
-  url: ai-dial-themes-pr-5.gke.test.epam-rail.com
+# global:
+#   url: ai-dial-themes-pr-5.gke.test.epam-rail.com
 
 extraDeploy:
   - apiVersion: v1
