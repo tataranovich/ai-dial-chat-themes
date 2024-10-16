@@ -10,8 +10,7 @@ extraDeploy:
     data:
       # get content from --set-file
       aidial.config.json: |
-        {{- .Values.core.extraConfig | nindent 4 }}
-
+        {}
   - apiVersion: v1
     kind: ConfigMap
     metadata:
