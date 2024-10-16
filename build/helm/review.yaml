@@ -88,6 +88,7 @@ chat:
     registry: ghcr.io
     repository: epam/ai-dial-chat
     tag: development
+  extraEnvVarsSecret: dial-chat-config
   env:
     NEXTAUTH_URL: "https://chat-{{ .Values.global.url }}"
     KEEP_ALIVE_TIMEOUT: "61000"
