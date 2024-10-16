@@ -130,7 +130,8 @@ core:
     registry: ghcr.io
     repository: epam/ai-dial-core
     tag: development
-  extraEnvVarsSecret: dial-core-encryption
+  configuration:
+    existingSecret: dial-core-encryption
   env:
     aidial.config.files: '["/mnt/secrets-store/aidial.config.json"]'
     # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo
