@@ -17,19 +17,26 @@
                 "unit": "char_without_whitespace",
                 "prompt": "0.00000025",
                 "completion": "0.0000005"
-            },
-            "userRoles": [
-                "full-access"
-            ]
-        }
+            }
+        },
+        "gemini-1.0-pro": {
+            "type": "chat",
+            "displayName": "Gemini 1.0 Pro",
+            "iconUrl": "Gemini.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions",
+        }        
     },
     "roles": {
-        "default": {
+        "chat": {
             "limits": {
                 "gemini-pro-vision": {
                     "minute": "64000",
                     "day": "1000000"
-                }
+                },
+                "gemini-1.0-pro": {
+                    "minute": "64000",
+                    "day": "1000000"
+                }            
             }
         }
     }
