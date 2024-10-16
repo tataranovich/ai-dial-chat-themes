@@ -1,4 +1,342 @@
-core:
-  enabled: false
+global:
+  name: dial
+
+extraDeploy:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: gcp-cred-dial-core
+    data:
+      credential-configuration.json: |
+        {
+          "type": "external_account",
+          "audience": "//iam.googleapis.com/projects/771246914069/locations/global/workloadIdentityPools/test-gke-cluster/providers/gke-cluster-oidc",
+          "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+          "token_url": "https://sts.googleapis.com/v1/token",
+          "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/test-dial-core@hl2-epm-dial-test-t1iylu.iam.gserviceaccount.com:generateAccessToken",
+          "credential_source": {
+            "file": "/var/run/service-account/token",
+            "format": {
+              "type": "text"
+            }
+          }
+        }
+  - apiVersion: secrets-store.csi.x-k8s.io/v1
+    kind: SecretProviderClass
+    metadata:
+      name: dial-secrets
+    spec:
+      provider: gcp
+      secretObjects:
+        - type: Opaque
+          secretName: dial-core-encryption
+          data:
+            - objectName: encryption-key
+              key: aidial.encryption.key
+            - objectName: encryption-secret
+              key: aidial.encryption.secret
+        - type: Opaque
+          secretName: dial-core-config
+          data:
+            - objectName: aidial.config.json
+              key: aidial.config.json
+        - type: Opaque
+          secretName: dial-redis-password
+          data:
+            - objectName: redis-password
+              key: redis-password
+        - type: Opaque
+          secretName: dial-chat-config
+          data:
+            - objectName: dial-api-key
+              key: DIAL_API_KEY
+            - objectName: nextauth-secret
+              key: NEXTAUTH_SECRET
+        - type: Opaque
+          secretName: dial-bedrock-creds
+          data:
+            - objectName: aws-access-key-id
+              key: AWS_ACCESS_KEY_ID
+            - objectName: aws-secret-access-key
+              key: AWS_SECRET_ACCESS_KEY
+      parameters:
+        auth: provider-adc
+        secrets: |
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-core-config/versions/latest"
+            path: "aidial.config.json"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-core-secret/versions/latest"
+            path: "encryption-secret"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-core-key/versions/latest"
+            path: "encryption-key"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-redis-password/versions/latest"
+            path: "redis-password"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-apikey/versions/latest"
+            path: "dial-api-key"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-nextauth/versions/latest"
+            path: "nextauth-secret"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-bedrock-aws-access-key-id/versions/latest"
+            path: "aws-access-key-id"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-bedrock-aws-secret-access-key/versions/latest"
+            path: "aws-secret-access-key"
+
+
 chat:
   enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-chat
+    tag: development
+  env:
+    NEXTAUTH_URL: "https://chat-{{ .Values.global.url }}"
+    KEEP_ALIVE_TIMEOUT: "61000"
+    DIAL_API_HOST: "http://{{ .Values.global.name }}-core"
+    DEFAULT_MODEL: "gpt-35-turbo"
+    NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT: ""
+    ENABLED_FEATURES: "conversations-section,prompts-section,top-settings,top-clear-conversation,top-chat-info,top-chat-model-settings,empty-chat-settings,header,footer,request-api-key,report-an-issue,likes,conversations-sharing,prompts-sharing,input-files,attachments-manager,conversations-publishing,prompts-publishing,custom-logo,input-links,custom-applications,message-templates,marketplace,quick-apps"
+    NEXT_PUBLIC_APP_NAME: "EPAM AI DIAL - Review"
+    THEMES_CONFIG_HOST: "https://themes-{{ .Values.global.url }}"
+    RECENT_MODELS_IDS: "gpt-35-turbo,gpt-4"
+    AUTH_AUTH0_HOST: "https://chatbot-ui-staging.eu.auth0.com"  # ToDO
+    AUTH_AUTH0_NAME: "Auth0 SSO"
+    AUTH_AUTH0_AUDIENCE: "chat"
+    ANNOUNCEMENT_HTML_MESSAGE: 'Welcome to <a href="about:blank" target="_blank">AI Dial</a>! Unified AI Access for Enterprises. Secure, scalable and customizable enterprise-grade AI ecosystem that seamlessly integrates with your data and workflows, tailored to achieve your unique business objectives.'
+    # TRACES_URL: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4318/v1/traces" # ToDO
+  resources:
+    limits:
+      memory: 2Gi
+    requests:
+      cpu: 0.5
+      memory: 512Mi
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-production"
+    hosts:
+      - "chat-{{ .Values.global.url }}"
+    tls:
+      - secretName: "chat-tls-secret"
+        hosts:
+          - "chat-{{ .Values.global.url }}"
+
+core:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-core
+    tag: development
+  env:
+    aidial.config.files: '["/mnt/secrets-store/aidial.config.json"]'
+    # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo
+    # aidial.identityProviders.auth0.issuerPattern: '^https:\/\/chatbot-ui-staging\.eu\.auth0\.com.+$' # ToDo
+    # aidial.identityProviders.auth0.rolePath: "dial_roles" # ToDo
+    aidial.applications.includeCustomApps: "true"
+    aidial.storage.provider: "google-cloud-storage"
+    aidial.storage.bucket: "test-dial"
+    aidial.storage.createBucket: "false"
+    aidial.storage.prefix: "{{ .Release.Namespace }}"
+    aidial.storage.overrides: '{"jclouds.oauth.credential-type": "bearerTokenCredentials"}'
+    aidial.identityProviders.fake.jwksUrl: "http://fakeJwksUrl"
+    aidial.identityProviders.fake.rolePath: "roles"
+    aidial.identityProviders.fake.issuerPattern: "issuer"
+    GOOGLE_APPLICATION_CREDENTIALS: "/etc/workload-identity/credential-configuration.json"
+
+  extraVolumes:
+    - name: secrets
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "dial-secrets"
+    - name: token
+      projected:
+        sources:
+          - serviceAccountToken:
+              audience: https://iam.googleapis.com/projects/771246914069/locations/global/workloadIdentityPools/test-gke-cluster/providers/gke-cluster-oidc
+              expirationSeconds: 3600
+              path: token
+    - name: workload-identity-credential-configuration
+      configMap:
+        name: gcp-cred-dial-core
+  extraVolumeMounts:
+    - name: secrets
+      mountPath: "/mnt/secrets-store"
+      readOnly: true
+    - name: token
+      mountPath: "/var/run/service-account"
+      readOnly: true
+    - name: workload-identity-credential-configuration
+      mountPath: "/etc/workload-identity"
+      readOnly: true
+  serviceAccount:
+    create: true
+    name: dial-core
+    annotations:
+      iam.gke.io/gcp-service-account: "test-dial-core@hl2-epm-dial-test-t1iylu.iam.gserviceaccount.com"
+  redis:
+    enabled: true
+    existingSecret: dial-redis-password
+    existingSecretPasswordKey: redis-password
+  logger:
+    enabled: false
+  ingress:
+    enabled: false
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-production"
+    hosts:
+      - "core-{{ .Values.global.url }}"
+    tls:
+      - secretName: "core-tls-secret"
+        hosts:
+          - "core-{{ .Values.global.url }}"
+
+bedrock:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-adapter-bedrock
+    tag: development
+  extraEnvVarsSecret: dial-bedrock-creds
+  env:
+    AWS_DEFAULT_REGION: "us-east-1"
+    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    # OTEL_PYTHON_LOG_CORRELATION: "true"
+    # OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: "/health"
+    # OTEL_LOGS_EXPORTER: "otlp"
+    # OTEL_METRICS_EXPORTER: "otlp"
+    # OTEL_TRACES_EXPORTER: "otlp"
+    # OTEL_EXPORTER_OTLP_ENDPOINT: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4317"
+    # OTEL_RESOURCE_ATTRIBUTES: "service.name=dial-bedrock"
+
+vertexai:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-adapter-vertexai
+    tag: development
+  env:
+    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    GOOGLE_APPLICATION_CREDENTIALS: "/etc/workload-identity/credential-configuration.json"
+    GCP_PROJECT_ID: "hl2-epm-dial-test-t1iylu"
+    DEFAULT_REGION: "us-central1"
+    # OTEL_PYTHON_LOG_CORRELATION: "true"
+    # OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: "/health"
+    # OTEL_LOGS_EXPORTER: "otlp"
+    # OTEL_METRICS_EXPORTER: "otlp"
+    # OTEL_TRACES_EXPORTER: "otlp"
+    # OTEL_EXPORTER_OTLP_ENDPOINT: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4317"
+    # OTEL_RESOURCE_ATTRIBUTES: "service.name=dial-vertex"
+  extraDeploy:
+    - apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: gcp-cred
+      data:
+        credential-configuration.json: |
+          {
+            "type": "external_account",
+            "audience": "//iam.googleapis.com/projects/771246914069/locations/global/workloadIdentityPools/test-gke-cluster/providers/gke-cluster-oidc",
+            "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+            "token_url": "https://sts.googleapis.com/v1/token",
+            "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/test-dial-vertexai@hl2-epm-dial-test-t1iylu.iam.gserviceaccount.com:generateAccessToken",
+            "credential_source": {
+              "file": "/var/run/service-account/token",
+              "format": {
+                "type": "text"
+              }
+            }
+          }
+  extraVolumes:
+    - name: token
+      projected:
+        sources:
+          - serviceAccountToken:
+              audience: https://iam.googleapis.com/projects/771246914069/locations/global/workloadIdentityPools/test-gke-cluster/providers/gke-cluster-oidc
+              expirationSeconds: 3600
+              path: token
+    - name: workload-identity-credential-configuration
+      configMap:
+        name: gcp-cred
+  extraVolumeMounts:
+    - name: token
+      mountPath: "/var/run/service-account"
+      readOnly: true
+    - name: workload-identity-credential-configuration
+      mountPath: "/etc/workload-identity"
+      readOnly: true
+  affinity: *affinity
+  tolerations: *tolerations
+
+openai:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-adapter-openai
+    tag: development
+  env:
+    DIAL_USE_FILE_STORAGE: "true"
+    DIAL_URL: "http://{{ .Values.global.name }}-core"
+    GPT4_VISION_DEPLOYMENTS: "gpt-4-vision-preview"
+    GPT4O_DEPLOYMENTS: "gpt-4o-2024-05-13,gpt-4o-mini-2024-07-18,gpt-4o-2024-08-06"
+    DALLE3_DEPLOYMENTS: "dall-e-3"
+    TIMEOUT_KEEP_ALIVE: "61" # HACK
+    ELIMINATE_EMPTY_CHOICES: "true"
+    # OTEL_PYTHON_LOG_CORRELATION: "true"
+    # OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: "/health"
+    # OTEL_LOGS_EXPORTER: "otlp"
+    # OTEL_METRICS_EXPORTER: "otlp"
+    # OTEL_TRACES_EXPORTER: "otlp"
+    # OTEL_EXPORTER_OTLP_ENDPOINT: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4317"
+    # OTEL_RESOURCE_ATTRIBUTES: "service.name=dial-openai"
+
+dial:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-adapter-dial
+    tag: development
+  # fullnameOverride: "dial-adapter-dial" # ???
+  env:
+    DIAL_URL: "http://{{ .Values.global.name }}-core"
+
+assistant:
+  enabled: false
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-assistant
+    tag: development
+  env:
+    OPENAI_API_BASE: "http://{{ .Values.global.name }}-core"
+    TOOLS_SUPPORTING_DEPLOYMENTS: "gpt-4-1106-preview,anthropic.claude-v2-1"
+
+themes:
+  enabled: true
+  # image repository and tag can come from HELM_CUSTOM_VALUES variable
+  image:
+    pullPolicy: Always
+    registry: ghcr.io
+    repository: epam/ai-dial-assistant
+    tag: development
+  podAnnotations:
+    autorestart: '{{ dateInZone "2006-01-02 15:04:05Z" (now) "UTC" }}'
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-production"
+    hosts:
+      - "themes-{{ .Values.global.url }}"
+    tls:
+      - secretName: "themes-tls-secret"
+        hosts:
+          - "themes-{{ .Values.global.url }}"
