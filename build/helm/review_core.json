@@ -1,5 +1,24 @@
 {
     "models": {
+        "gpt-4-0125-preview": {
+            "type": "chat",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-0125-preview/chat/completions",
+            "displayName": "GPT-4 Turbo",
+            "displayVersion": "0125-Preview",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation"],
+            "iconUrl": "gpt4.svg",
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+
         "gemini-pro-vision": {
             "type": "chat",
             "displayName": "Gemini Pro Vision",
@@ -47,6 +66,10 @@
     "roles": {
         "chat": {
             "limits": {
+                "gpt-4-0125-preview": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
                 "gemini-pro-vision": {
                     "minute": "64000",
                     "day": "1000000"
