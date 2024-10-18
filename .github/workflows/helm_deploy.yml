@@ -71,8 +71,8 @@ jobs:
       contents: "read"
       id-token: "write"
     runs-on: ubuntu-latest
-    # environment: pr-${{ github.event.pull_request.number }}
-    # concurrency: pr-${{ github.event.pull_request.number }}
+    environment: pr-${{ github.event.pull_request.number }}
+    concurrency: pr-${{ github.event.pull_request.number }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
