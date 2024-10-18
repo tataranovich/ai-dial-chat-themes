@@ -213,7 +213,7 @@ core:
           - "core-{{ .Values.global.url }}"
 
 bedrock:
-  enabled: false
+  enabled: true
   image:
     pullPolicy: Always
     registry: ghcr.io

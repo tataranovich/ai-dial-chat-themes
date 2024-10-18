@@ -24,6 +24,24 @@
             "displayName": "Gemini 1.0 Pro",
             "iconUrl": "Gemini.svg",
             "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions"
+        },
+        "anthropic.claude": {
+            "type": "chat",
+            "displayName": "Anthropic Claude",
+            "displayVersion": "3-sonnet",
+            "iconUrl": "/anthropic.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-3-sonnet-20240229-v1:0/chat/completions",
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000300",
+                "completion": "0.00001500"
+            }
         }
     },
     "roles": {
@@ -34,6 +52,10 @@
                     "day": "1000000"
                 },
                 "gemini-1.0-pro": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude": {
                     "minute": "64000",
                     "day": "1000000"
                 }
