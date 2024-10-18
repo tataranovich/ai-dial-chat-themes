@@ -5,16 +5,16 @@ on:
     branches: [development, release-*]
 
 jobs:
-  create_env:
-    uses: ./.github/workflows/create_env.yml
-    with:
-      environment_name: pr-${{ github.event.pull_request.number }}
-  
-  # test:
-  #   uses: ./.github/workflows/helm_deploy.yml
+  # create_env:
+  #   uses: ./.github/workflows/create_env.yml
   #   with:
-  #     cloud_provider: "gcp"
-  #     k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
-  #     helm_values_file: "./build/helm/review.yaml"
-  #     helm_values: "global.url=ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
-  #     helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
+  #     environment_name: pr-${{ github.event.pull_request.number }}
+  
+  test:
+    uses: ./.github/workflows/helm_deploy.yml
+    with:
+      cloud_provider: "gcp"
+      k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
+      helm_values_file: "./build/helm/review.yaml"
+      helm_values: "global.url=ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
+      helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
