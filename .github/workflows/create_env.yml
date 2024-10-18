@@ -1,13 +1,14 @@
 name: Manage Environments
 
 on:
-  # This allows the workflow to be manually triggered
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment_name:
-        description: 'The name of the environment to manage'
+        type: string
+        description: "The name of the environment to manage"
         required: true
       reviewers:
+        type: string
         description: 'Comma-separated list of reviewers'
         required: false
         default: ''
