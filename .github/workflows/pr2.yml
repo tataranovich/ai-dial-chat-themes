@@ -5,10 +5,10 @@ on:
     branches: [development, release-*]
 
 jobs:
-  # create_env:
-  #   uses: ./.github/workflows/create_env.yml
-  #   with:
-  #     environment_name: pr-${{ github.event.pull_request.number }}
+  create_env:
+    uses: ./.github/workflows/create_env.yml
+    with:
+      environment_name: pr-${{ github.event.pull_request.number }}
   
   test:
     uses: ./.github/workflows/helm_deploy.yml
