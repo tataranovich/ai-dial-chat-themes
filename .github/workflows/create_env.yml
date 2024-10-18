@@ -1,0 +1,67 @@
+name: Manage Environments
+
+on:
+  # This allows the workflow to be manually triggered
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'The name of the environment to manage'
+        required: true
+      reviewers:
+        description: 'Comma-separated list of reviewers'
+        required: false
+        default: ''
+
+jobs:
+  check-and-create-environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Check if environment exists
+        id: check_env
+        run: |
+          curl -X GET \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/environments/${{ inputs.environment_name }} \
+            -o response.json \
+            -w "%{http_code}" > status.txt
+
+          http_code=$(cat status.txt)
+          if [ "$http_code" = "404" ]; then
+            echo "Environment does not exist"
+            echo "env_exists=false" >> $GITHUB_ENV
+          elif [ "$http_code" = "200" ]; then
+            echo "Environment exists"
+            echo "env_exists=true" >> $GITHUB_ENV
+          else
+            cat response.json
+            exit 1
+          fi
+
+      - name: Create environment if not exists
+        if: env.env_exists == 'false'
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/environments \
+            -d '{
+                  "name": "'"${{ inputs.environment_name }}"'"
+                }'
+
+      - name: Update environment reviewers
+        run: |
+          reviewers='["alexey-ban"]'
+          curl -X PUT \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/environments/${{ inputs.environment_name }}/protection_rules \
+            -d @- <<EOF
+          {
+            "required_reviewers": $reviewers
+          }
+          EOF
