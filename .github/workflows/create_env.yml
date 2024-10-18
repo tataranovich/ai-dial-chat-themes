@@ -46,7 +46,7 @@ jobs:
           fi
 
       - name: Create environment if not exists
-        if: env.env_exists == 'false'
+        # if: env.env_exists == 'false'
         run: |
           curl -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
