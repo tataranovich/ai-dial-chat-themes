@@ -290,7 +290,7 @@ vertexai:
       readOnly: true
 
 openai:
-  enabled: false
+  enabled: true
   image:
     pullPolicy: Always
     registry: ghcr.io
