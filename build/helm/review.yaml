@@ -143,7 +143,7 @@ core:
       existingSecret: dial-core-encryption
   env:
     aidial.config.files: '["/mnt/secrets-store/aidial.config.json","/mnt/config-git/aidial.config.json"]'
-    # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo
+    # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo 
     # aidial.identityProviders.auth0.issuerPattern: '^https:\/\/chatbot-ui-staging\.eu\.auth0\.com.+$' # ToDo
     # aidial.identityProviders.auth0.rolePath: "dial_roles" # ToDo
     aidial.applications.includeCustomApps: "true"
