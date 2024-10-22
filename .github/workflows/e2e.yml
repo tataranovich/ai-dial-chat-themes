@@ -1,0 +1,49 @@
+name: Deploy to helm
+
+on:
+  workflow_call:
+    inputs:
+      repository:
+        type: string
+        default: "epam/ai-dial-chat"
+        description: "Github repo where test located"
+      ref:
+        type: string
+        default: "development"
+        description: "test repo branch"
+
+      url:
+        type: string
+        default: ""
+        description: "Chat url for e2e test"
+        required: true
+
+      environment_name:
+        type: string
+        description: "The name of the environment to manage"
+        required: true
+
+
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+    concurrency: ${{ inputs.environment_name }}
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.ref }}
+          path: 
+          lfs: true
+
+      - name: Run e2e test # https://playwright.dev/docs/ci-intro#setting-up-github-actions
+        env:
+          E2E_HOST: ${{ inputs.url }}
+          NEXT_PUBLIC_OVERLAY_HOST: "test"
+          SIMPLE_REQUEST_MODEL: "gpt-35-turbo"
+        run: |
+          echo ${E2E_HOST}
+          ls -la .
+

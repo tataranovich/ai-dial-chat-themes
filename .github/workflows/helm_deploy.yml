@@ -7,6 +7,10 @@ on:
         type: string
         default: "gcp"
         description: "Cloud provider (gcp, aws, azure)"
+      environment_name:
+        type: string
+        description: "The name of the environment to manage"
+        required: true
 
       helm_chart_name:
         type: string
@@ -71,8 +75,8 @@ jobs:
       contents: "read"
       id-token: "write"
     runs-on: ubuntu-latest
-    environment: pr-${{ github.event.pull_request.number }}
-    concurrency: pr-${{ github.event.pull_request.number }}
+    environment: ${{ inputs.environment_name }}
+    concurrency: ${{ inputs.environment_name }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
