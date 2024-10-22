@@ -24,7 +24,7 @@ jobs:
           lfs: true
 
       - name: Update environment reviewers and policies
-        uses: octokit/request-action@dad4362715b7fb2ddedf9772c8670824af564f0d # v2.4
+        uses: octokit/request-action@dad4362715b7fb2ddedf9772c8670824af564f0d # v2.4        
         with:
           route: PUT /repos/${{ github.repository }}/environments/${{ github.event.inputs.environment_name }}
           data: |
