@@ -12,13 +12,12 @@ jobs:
       environment_name: pr-${{ github.event.pull_request.number }}
 
   build_review_docker:
-    uses: alexey-ban/ai-dial-ci/.github/workflows/test.yml@main
+    uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@main
     secrets: inherit   
     needs:
       - create_env
     with:
-      gcp_repo: ${{ github.repository_id }}
-      # environment_name: pr-${{ github.event.pull_request.number }}
+      environment_name: pr-${{ github.event.pull_request.number }}
       
   deploy_helm:
     uses: ./.github/workflows/helm_deploy.yml
@@ -38,6 +37,7 @@ jobs:
     needs:
       - create_env
       - build_review_docker
+      - deploy_helm
     with:
       url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
       environment_name: pr-${{ github.event.pull_request.number }}
