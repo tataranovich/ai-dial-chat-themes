@@ -1,5 +1,5 @@
-global:
-  url: ai-dial-themes-pr-5.gke.test.epam-rail.com
+# global:
+#   url: ai-dial-themes-pr-5.gke.test.epam-rail.com
 
 extraDeploy:
   - apiVersion: v1
@@ -355,5 +355,5 @@ themes:
     tls:
       - secretName: "themes-tls-secret"
         hosts:
-          # - "themes-ai-dial-themes-pr-1.gke.test.epam-rail.com"
-          - "themes-{{ .Values.global.url }}"
+          - "themes-ai-dial-themes-pr-1.gke.test.epam-rail.com"
+          # - "themes-{{ .Values.global.url }}"
