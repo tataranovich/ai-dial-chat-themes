@@ -24,29 +24,19 @@ jobs:
           lfs: true
 
       - name: Update environment reviewers and policies
-        uses: actions/github-script@v6
+        uses: octokit/request-action@dad4362715b7fb2ddedf9772c8670824af564f0d # v2.4
         with:
-          script: >
-            const environmentName = '${{ github.event.inputs.environment_name }}';
-            const reviewersInput = '${{ github.event.inputs.reviewers }}';
-            const reviewers = reviewersInput ? reviewersInput.split(',').map(reviewer => ({ type: 'User', id: reviewer.trim() })) : [];
-   
-            await github.request('PUT /repos/{owner}/{repo}/environments/{environment_name}', {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              environment_name: environmentName,
-              headers: {
-                'Accept': 'application/vnd.github+json',
-                'Authorization': `Bearer ${process.env.ADMIN_TOKEN}`,
-                'X-GitHub-Api-Version': '2022-11-28'
-              },
-              wait_timer: 0,
-              prevent_self_review: false,
-              reviewers: reviewers,
-              deployment_branch_policy: {
-                protected_branches: false,
-                custom_branch_policies: true
+          route: PUT /repos/${{ github.repository }}/environments/${{ github.event.inputs.environment_name }}
+          data: |
+            {
+              "wait_timer": 0,
+              "prevent_self_review": false,
+              "reviewers": [{"type": "User", "id": 20123880}],
+              "deployment_branch_policy": {
+                "protected_branches": false,
+                "custom_branch_policies": true
               }
-            });
+            }
         env:
-          ADMIN_TOKEN: ${{ secrets.ACTIONS_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_BOT_TOKEN }}
+ 
