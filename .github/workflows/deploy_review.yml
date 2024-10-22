@@ -1,8 +1,8 @@
-name: PR Workflow
+name: Deploy Review
 
 on:
   pull_request:
-    branches: [development, release-*]
+    branches: [development]
 
 jobs:
   create_env:
@@ -11,20 +11,20 @@ jobs:
     with:
       environment_name: pr-${{ github.event.pull_request.number }}
 
-  build_docker:
+  build_review_docker:
     uses: alexey-ban/ai-dial-ci/.github/workflows/test.yml@main
     secrets: inherit   
     needs:
       - create_env
     with:
       gcp_repo: ${{ github.repository_id }}
-      environment_name: pr-${{ github.event.pull_request.number }}
+      # environment_name: pr-${{ github.event.pull_request.number }}
       
   deploy_helm:
     uses: ./.github/workflows/helm_deploy.yml
     needs:
       - create_env
-      - build_docker
+      - build_review_docker
     with:
       cloud_provider: "gcp"
       k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
@@ -37,7 +37,7 @@ jobs:
     uses: ./.github/workflows/e2e.yml
     needs:
       - create_env
-      - build_docker
+      - build_review_docker
     with:
       url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
       # repository: ""
