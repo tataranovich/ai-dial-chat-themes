@@ -40,4 +40,5 @@ jobs:
       - build_review_docker
     with:
       url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
+      environment_name: pr-${{ github.event.pull_request.number }}
       # repository: ""
