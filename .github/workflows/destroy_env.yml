@@ -23,9 +23,9 @@ jobs:
           ignore_sha: true
           workflow_id: "all"
 
-      # - name: Sleep to debug
-      #   run: |
-      #       sleep 10
+      - name: Sleep to debug
+        run: |
+            sleep 5
 
       - name: Delete Github environment
         if: ${{ inputs.environment_destroy}}
