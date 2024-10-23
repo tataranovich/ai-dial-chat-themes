@@ -29,12 +29,13 @@ jobs:
     with:
       cloud_provider: "gcp"
       helm_operation: "uninstall"
-      k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}     
+      k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
+      environment_name: ${{ inputs.environment_name }}   
 
   delete-environment:
     runs-on: ubuntu-latest
     needs:
-      - cancel-workflows
+      - delete-k8s-env
     steps:
       - name: Sleep to debug # need delay between cancel workflow and delete environment
         run: |
