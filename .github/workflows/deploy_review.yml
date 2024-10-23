@@ -30,7 +30,7 @@ jobs:
       helm_values_file: "./build/helm/review.yaml"
       helm_values: "global.url=ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
       helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
-      environment_name: pr-${{ github.event.pull_request.number }}
+      # environment_name: pr-${{ github.event.pull_request.number }}
 
   run_e2e:
     uses: ./.github/workflows/e2e.yml
