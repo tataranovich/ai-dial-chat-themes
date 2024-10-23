@@ -10,6 +10,5 @@ jobs:
     uses: ./.github/workflows/destroy_env.yml
     secrets: inherit
     with:
-    #   environment_name: pr-${{ github.event.pull_request.number }}
+      environment_name: pr-${{ github.event.pull_request.number }}
       environment_destroy: true
-      environment_name: pr-1
