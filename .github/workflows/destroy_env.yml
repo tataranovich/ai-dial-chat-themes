@@ -24,6 +24,8 @@ jobs:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           environment: ${{ inputs.environment_name }}
 
+          onlyRemoveDeployments: true
+
       - name: Install kubectl
         uses: azure/setup-kubectl@3e0aec4d80787158d308d7b364cb1b702e7feb7f # v4.0.0
         with:
