@@ -22,7 +22,6 @@ jobs:
         with:
           ignore_sha: true
           workflow_id: "all"
-          only_status: "waiting"
 
       - name: Sleep to debug
         run: |
