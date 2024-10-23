@@ -1,4 +1,4 @@
-name: Manage Environments
+name: Create Environment
 
 on:
   workflow_call:

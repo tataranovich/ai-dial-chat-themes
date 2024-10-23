@@ -1,0 +1,14 @@
+name: Destroy Review
+
+on:
+  pull_request:
+    branches: [development]
+    types: [closed]
+
+jobs:
+  destroy_env:
+    uses: ./.github/workflows/destroy_env.yml
+    secrets: inherit
+    with:
+      environment_name: pr-${{ github.event.pull_request.number }}
+      environment_destroy: true
