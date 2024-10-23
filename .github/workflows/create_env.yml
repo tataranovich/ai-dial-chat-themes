@@ -14,7 +14,7 @@ on:
         default: "20123880"
 
 jobs:
-  check-and-create-environment:
+  create_environment:
     runs-on: ubuntu-latest
 
     steps:
@@ -48,3 +48,14 @@ jobs:
             }
           }
           EOF
+
+  check_permission:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+    concurrency: ${{ inputs.environment_name }}
+    needs: 
+      - create_environment
+    steps:
+      - name: Check permission
+        run: |
+          echo "ToDO check maintainer for approve"

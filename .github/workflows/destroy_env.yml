@@ -30,7 +30,6 @@ jobs:
       cloud_provider: "gcp"
       helm_operation: "uninstall"
       k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
-      # environment_name: ${{ inputs.environment_name }}   
 
   delete-environment:
     runs-on: ubuntu-latest
