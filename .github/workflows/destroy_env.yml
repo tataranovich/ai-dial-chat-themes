@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: styfle/cancel-workflow-action
+        with:
+          workflow_id: "all"
+
       - name: Delete Github environment
         if: ${{ inputs.environment_destroy}}
         uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c # v3.0.0
