@@ -10,7 +10,6 @@ on:
       environment_name:
         type: string
         description: "The name of the environment to manage"
-        required: true
 
       helm_operation:
         default: "upgrade"
@@ -74,13 +73,22 @@ on:
         description: "Kubernetes namespace to deploy into"
 
 jobs:
+  check_permission:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.environment_name }}
+    environment: ${{ inputs.environment_name }}
+    concurrency: ${{ inputs.environment_name }}
+    steps:
+      - name: Delete k8s namespace
+        run: |
+          echo "ToDO check maintainer for approve"
+
   helm_update:
     permissions:
       contents: "read"
       id-token: "write"
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment_name }}
-    concurrency: ${{ inputs.environment_name }}
+    needs: [check_permission]
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
