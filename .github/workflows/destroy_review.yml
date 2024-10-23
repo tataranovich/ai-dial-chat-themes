@@ -3,7 +3,7 @@ name: Destroy Review
 on:
   pull_request:
     branches: [development]
-    # types: [closed]
+    types: [closed]
 
 jobs:
   destroy_env:
