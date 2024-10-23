@@ -23,7 +23,7 @@ jobs:
     uses: ./.github/workflows/helm_deploy.yml
     needs:
       - create_env
-      - build_review_docker
+      # - build_review_docker
     with:
       cloud_provider: "gcp"
       k8s_namespace: ${{ github.repository_id }}-pr-${{ github.event.pull_request.number }}
@@ -35,8 +35,6 @@ jobs:
   run_e2e:
     uses: ./.github/workflows/e2e.yml
     needs:
-      - create_env
-      - build_review_docker
       - deploy_helm
     with:
       url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
