@@ -24,6 +24,10 @@ jobs:
           workflow_id: "all"
           only_status: "waiting"
 
+      - name: Sleep to debug
+        run: |
+            sleep 300
+
       - name: Delete Github environment
         if: ${{ inputs.environment_destroy}}
         uses: strumwolf/delete-deployment-environment@a4825dd9648c57da8437a4885c3fcad58beac69c # v3.0.0
