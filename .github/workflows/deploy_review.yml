@@ -11,13 +11,13 @@ jobs:
     with:
       environment_name: pr-${{ github.event.pull_request.number }}
 
-  build_review_docker:
-    uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@main
-    secrets: inherit   
-    needs:
-      - create_env
-    with:
-      environment_name: pr-${{ github.event.pull_request.number }}
+  # build_review_docker:
+  #   uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@main
+  #   secrets: inherit   
+  #   needs:
+  #     - create_env
+  #   with:
+  #     environment_name: pr-${{ github.event.pull_request.number }}
       
   deploy_helm:
     uses: ./.github/workflows/helm_deploy.yml
