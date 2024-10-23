@@ -12,4 +12,4 @@ jobs:
     with:
     #   environment_name: pr-${{ github.event.pull_request.number }}
       environment_destroy: true
-      environment_name: e2e-test
+      environment_name: pr-1
