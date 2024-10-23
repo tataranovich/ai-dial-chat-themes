@@ -110,17 +110,17 @@ jobs:
         with:
            version: 'v1.30.6'
       - name: Add Helm repository
-        if: ${{ inputs.helm_operation }} == "upgrade"
+        if: ${{ inputs.helm_operation  == 'upgrade' }}
         run: |
           helm repo add ${{ inputs.helm_repo_name }} ${{ inputs.helm_repo_url }}
            helm repo update
 
       - name: Upgrade Helm Chart
-        if: ${{ inputs.helm_operation }} == "upgrade"
+        if: ${{ inputs.helm_operation  == 'upgrade' }}
+        env:
+          HELM_VALUES_FILE: ${{ inputs.helm_values_file }}
+          HELM_VALUES: ${{ inputs.helm_values }}
         run: |
-          HELM_VALUES_FILE="${{ inputs.helm_values_file }}"
-          HELM_VALUES="${{ inputs.helm_values }}"
-
           helm upgrade ${{ inputs.helm_release_name }} ${{ inputs.helm_repo_name }}/${{ inputs.helm_release_name }} \
             --version ${{ inputs.helm_chart_version }} \
             --namespace  ${{ inputs.k8s_namespace }} \
@@ -128,13 +128,13 @@ jobs:
             ${{ inputs.helm_extra_args }}
 
       - name: Uninstall helm release
-        if: ${{ inputs.helm_operation }} == "uninstall"
+        if: ${{ inputs.helm_operation  == 'uninstall' }}
         run: |
           helm uninstall ${{ inputs.helm_release_name }} --namespace ${{ inputs.k8s_namespace }} \
             --ignore-not-found  \
             ${{ inputs.helm_extra_args }}
 
       - name: Delete k8s namespace
-        if: ${{ inputs.helm_operation }} == "uninstall"
+        if: ${{ inputs.helm_operation  == 'uninstall' }}
         run: |
           kubectl delete namespace ${{ inputs.k8s_namespace }} --ignore-not-found
