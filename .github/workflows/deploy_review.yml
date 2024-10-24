@@ -9,6 +9,7 @@ jobs:
     uses: alexey-ban/ai-dial-ci/.github/workflows/gh_env.yml@review_env
     secrets: inherit
     with:
+      # environment_create: true
       environment_name: pr-${{ github.event.pull_request.number }}
       environment_url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
 
@@ -35,7 +36,8 @@ jobs:
   run_e2e:
     uses: alexey-ban/ai-dial-ci/.github/workflows/run_e2e_test.yml@review_env
     needs:
+      - create_env
       - deploy_helm
     with:
-      url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
+      url: ${{ needs.create_env.outputs.environment_url }}
       environment_name: pr-${{ github.event.pull_request.number }}
