@@ -33,7 +33,7 @@ jobs:
       helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
 
   run_e2e:
-    uses: alexey-ban/ai-dial-ci/.github/workflows/run_e2e_test@review_env
+    uses: alexey-ban/ai-dial-ci/.github/workflows/run_e2e_test.yml@review_env
     needs:
       - deploy_helm
     with:
