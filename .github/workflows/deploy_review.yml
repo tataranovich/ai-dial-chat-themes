@@ -6,14 +6,14 @@ on:
 
 jobs:
   create_env:
-    uses: ./.github/workflows/create_env.yml
+    uses: alexey-ban/ai-dial-ci/.github/workflows/gh_env.yml@review_env
     secrets: inherit
     with:
       environment_name: pr-${{ github.event.pull_request.number }}
       environment_url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
 
   # build_review_docker:
-  #   uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@main
+  #   uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@review_env
   #   secrets: inherit   
   #   needs:
   #     - create_env
@@ -21,7 +21,7 @@ jobs:
   #     environment_name: pr-${{ github.event.pull_request.number }}
       
   deploy_helm:
-    uses: ./.github/workflows/helm_deploy.yml
+    uses: alexey-ban/ai-dial-ci/.github/workflows/k8s_env.yml@review_env
     needs:
       - create_env
       # - build_review_docker
@@ -31,13 +31,11 @@ jobs:
       helm_values_file: "./build/helm/review.yaml"
       helm_values: "global.url=ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
       helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
-      # environment_name: pr-${{ github.event.pull_request.number }}
 
   run_e2e:
-    uses: ./.github/workflows/e2e.yml
+    uses: alexey-ban/ai-dial-ci/.github/workflows/run_e2e_test@review_env
     needs:
       - deploy_helm
     with:
       url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
       environment_name: pr-${{ github.event.pull_request.number }}
-      # repository: ""
