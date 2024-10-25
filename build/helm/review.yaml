@@ -58,6 +58,10 @@ extraDeploy:
               key: DIAL_API_KEY
             - objectName: nextauth-secret
               key: NEXTAUTH_SECRET
+            - objectName: auth0-client
+              key: AUTH_AUTH0_CLIENT_ID
+            - objectName: auth0-secret
+              key: AUTH_AUTH0_SECRET              
         - type: Opaque
           secretName: dial-bedrock-creds
           data:
@@ -78,6 +82,10 @@ extraDeploy:
             path: "redis-password"
           - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-apikey/versions/latest"
             path: "dial-api-key"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-auth0-client/versions/latest"
+            path: "auth0-client"
+          - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-auth0-secret/versions/latest"
+            path: "auth0-secret"
           - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-chat-nextauth/versions/latest"
             path: "nextauth-secret"
           - resourceName: "projects/hl2-epm-dial-test-t1iylu/secrets/test-dial-bedrock-aws-access-key-id/versions/latest"
@@ -101,7 +109,7 @@ chat:
     NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT: ""
     ENABLED_FEATURES: "conversations-section,prompts-section,top-settings,top-clear-conversation,top-chat-info,top-chat-model-settings,empty-chat-settings,header,footer,request-api-key,report-an-issue,likes,conversations-sharing,prompts-sharing,input-files,attachments-manager,conversations-publishing,prompts-publishing,custom-logo,input-links,custom-applications,message-templates,marketplace,quick-apps"
     NEXT_PUBLIC_APP_NAME: "EPAM AI DIAL - Review"
-    THEMES_CONFIG_HOST: "https://themes-{{ .Values.global.url }}"
+    THEMES_CONFIG_HOST: "http://dial-themes"
     RECENT_MODELS_IDS: "gpt-35-turbo,gpt-4"
     AUTH_AUTH0_HOST: "https://aidial.us.auth0.com"  # ToDO
     AUTH_AUTH0_NAME: "Auth0 SSO"
@@ -342,7 +350,7 @@ themes:
     autorestart: '{{ dateInZone "2006-01-02 15:04:05Z" (now) "UTC" }}'
 
   ingress:
-    enabled: true
+    enabled: false
     ingressClassName: nginx
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt-production"

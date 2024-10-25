@@ -9,9 +9,9 @@ jobs:
     uses: alexey-ban/ai-dial-ci/.github/workflows/gh_env.yml@review_env
     secrets: inherit
     with:
-      # environment_create: true
-      environment_name: pr-${{ github.event.pull_request.number }}
-      environment_url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
+      environment_create: true
+      # environment_name: pr-${{ github.event.pull_request.number }}
+      # environment_url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
 
   build_docker:
     uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@review_env
@@ -30,7 +30,7 @@ jobs:
       cloud_provider: "gcp"
       k8s_namespace: ${{ github.repository_id }}-${{ needs.create_env.outputs.environment_name }}
       helm_values_file: "./build/helm/review.yaml"
-      helm_values: "global.url=ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com,themes.image.registry=${{ needs.build_docker.outputs.image_registry }},themes.image.repository=${{ needs.build_docker.outputs.image_repository }},themes.image.tag=${{ needs.build_docker.outputs.image_tag }}" # for epam we can delete themes.image.repository
+      helm_values: "global.url=${{ needs.build_docker.outputs.base_url }},themes.image.registry=${{ needs.build_docker.outputs.image_registry }},themes.image.repository=${{ needs.build_docker.outputs.image_repository }},themes.image.tag=${{ needs.build_docker.outputs.image_tag }}" # for epam we can delete themes.image.repository
       helm_extra_args: "--set-file core.extraConfig=./build/helm/review_core.json"
 
   run_e2e:
@@ -39,5 +39,4 @@ jobs:
       - create_env
       - deploy_helm
     with:
-      url: ${{ needs.create_env.outputs.environment_url }}
-      environment_name: ${{ needs.create_env.outputs.environment_name }}
+      url: ${{ needs.create_env.outputs.chat_url }}
