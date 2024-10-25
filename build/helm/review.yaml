@@ -1,6 +1,3 @@
-# global:
-#   url: ai-dial-themes-pr-5.gke.test.epam-rail.com
-
 extraDeploy:
   - apiVersion: v1
     kind: ConfigMap
@@ -106,9 +103,9 @@ chat:
     NEXT_PUBLIC_APP_NAME: "EPAM AI DIAL - Review"
     THEMES_CONFIG_HOST: "https://themes-{{ .Values.global.url }}"
     RECENT_MODELS_IDS: "gpt-35-turbo,gpt-4"
-    # AUTH_AUTH0_HOST: "https://chatbot-ui-staging.eu.auth0.com"  # ToDO
-    # AUTH_AUTH0_NAME: "Auth0 SSO"
-    # AUTH_AUTH0_AUDIENCE: "chat"
+    AUTH_AUTH0_HOST: "https://aidial.us.auth0.com"  # ToDO
+    AUTH_AUTH0_NAME: "Auth0 SSO"
+    AUTH_AUTH0_AUDIENCE: "chat"
     ANNOUNCEMENT_HTML_MESSAGE: 'Welcome to <a href="about:blank" target="_blank">AI Dial</a>! Unified AI Access for Enterprises. Secure, scalable and customizable enterprise-grade AI ecosystem that seamlessly integrates with your data and workflows, tailored to achieve your unique business objectives.'
     # TRACES_URL: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4318/v1/traces" # ToDO
   resources:
@@ -128,8 +125,7 @@ chat:
     tls:
       - secretName: "chat-tls-secret"
         hosts:
-          - "chat-ai-dial-themes-pr-1.gke.test.epam-rail.com"
-          #- "chat-{{ .Values.global.url }}"
+          - "chat-{{ .Values.global.url }}"
 
 core:
   enabled: true
@@ -143,9 +139,9 @@ core:
       existingSecret: dial-core-encryption
   env:
     aidial.config.files: '["/mnt/secrets-store/aidial.config.json","/mnt/config-git/aidial.config.json"]'
-    # aidial.identityProviders.auth0.jwksUrl: "https://chatbot-ui-staging.eu.auth0.com/.well-known/jwks.json" # ToDo 
-    # aidial.identityProviders.auth0.issuerPattern: '^https:\/\/chatbot-ui-staging\.eu\.auth0\.com.+$' # ToDo
-    # aidial.identityProviders.auth0.rolePath: "dial_roles" # ToDo
+    aidial.identityProviders.auth0.jwksUrl: "https://aidial.us.auth0.com/.well-known/jwks.json" 
+    aidial.identityProviders.auth0.issuerPattern: '^https:\/\/aidial\.us\.auth0\.com.+$'
+    aidial.identityProviders.auth0.rolePath: "dial_roles"
     aidial.applications.includeCustomApps: "true"
     aidial.storage.provider: "google-cloud-storage"
     aidial.storage.bucket: "test-dial"
@@ -355,5 +351,4 @@ themes:
     tls:
       - secretName: "themes-tls-secret"
         hosts:
-          - "themes-ai-dial-themes-pr-1.gke.test.epam-rail.com"
-          # - "themes-{{ .Values.global.url }}"
+          - "themes-{{ .Values.global.url }}"
