@@ -10,8 +10,6 @@ jobs:
     secrets: inherit
     with:
       environment_create: true
-      # environment_name: pr-${{ github.event.pull_request.number }}
-      # environment_url: "https://chat-ai-dial-themes-pr-${{ github.event.pull_request.number }}.gke.test.epam-rail.com"
 
   build_docker:
     uses: alexey-ban/ai-dial-ci/.github/workflows/generic_docker_review.yml@review_env
