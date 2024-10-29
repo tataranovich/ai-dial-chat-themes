@@ -457,7 +457,7 @@
             "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
             "descriptionKeywords": ["Text Generation", "Continue Supported"],
             "iconUrl": "palm2.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/chat-bison-32k@002/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison-32k@002/chat/completions",
             "limits": {
                 "maxTotalTokens": 32768,
                 "maxCompletionTokens": 8192
@@ -475,7 +475,7 @@
             "iconUrl": "palm2.svg",
             "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
             "descriptionKeywords": ["Text Generation"],
-            "endpoint": "http://dial-vertex/openai/deployments/chat-bison@001/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison@001/chat/completions",
             "limits": {
                 "maxPromptTokens": 4096,
                 "maxCompletionTokens": 1024
@@ -493,7 +493,7 @@
             "iconUrl": "palm2.svg",
             "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
             "descriptionKeywords": ["Text Generation", "Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/chat-bison-32k@002/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison-32k@002/chat/completions",
             "limits": {
                 "maxTotalTokens": 32768,
                 "maxCompletionTokens": 8192
@@ -512,7 +512,7 @@
             "descriptionKeywords": ["Text Generation", "Development", "Continue Supported"],
             "iconUrl": "palm2.svg",
 
-            "endpoint": "http://dial-vertex/openai/deployments/codechat-bison-32k@002/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison-32k@002/chat/completions",
             "limits": {
                 "maxTotalTokens": 32768,
                 "maxCompletionTokens": 8192
@@ -530,7 +530,7 @@
             "description": "Codechat-bison is a code generation model developed by Google, part of their Codey suite of tools.\n\nIt's based on the PaLM 2 language model and is designed for generating and understanding code. The model supports various applications such as code completion, codechat, documentation generation, and more, to enhance productivity and software development efficiency.",
             "descriptionKeywords": ["Text Generation", "Development"],
             "iconUrl": "palm2.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/codechat-bison@001/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison@001/chat/completions",
             "limits": {
                 "maxPromptTokens": 6144,
                 "maxCompletionTokens": 1024
@@ -551,7 +551,7 @@
             "iconUrl": "palm2.svg",
             "description": "Codechat-bison is a code generation model developed by Google, part of their Codey suite of tools.\n\nIt's based on the PaLM 2 language model and is designed for generating and understanding code. The model supports various applications such as code completion, codechat, documentation generation, and more, to enhance productivity and software development efficiency.",
             "descriptionKeywords": ["Text Generation", "Development", "Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/codechat-bison-32k@002/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison-32k@002/chat/completions",
             "limits": {
                 "maxTotalTokens": 32768,
                 "maxCompletionTokens": 8192
@@ -566,7 +566,7 @@
             "type": "chat",
             "displayName": "Gemini Pro",
             "iconUrl": "Gemini.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/gemini-pro/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions",
             "description": "Gemini Pro is a version of Google's Gemini AI model. It is designed to power Google's Gemini assistant and is used in the paid AI chatbot service, Gemini Advanced.\n\nThis model can deliver fast response times and understand complex queries. Developers can customize Gemini Pro to specific contexts and use cases via a fine-tuning or grounding process. For example, it can be instructed to use data from third-party providers or source information from corporate datasets or Google Search instead of its wider knowledge bank. Gemini Pro can also be connected to external, third-party APIs to perform particular actions, like automating a back-office workflow. It can reason across 100,000 lines of code and provide helpful solutions, modifications, and explanations",
             "descriptionKeywords": ["Text Generation", "Continue Supported"],
             "limits": {
@@ -585,7 +585,7 @@
             "iconUrl": "Gemini-Pro-Vision.svg",
             "description": "Gemini Pro Vision is a product of Google's Large Language Model (LLM) known as Gemini. It is a powerful model capable of dealing with multiple modalities of data such as image, video, sound, etc.\n\nIt is available in Bard through the MakerSuite UI and their Python Software Development Kit (SDK) [1]. Gemini Pro Vision is marketed as an all-purpose Vision model that can solve a wide range of tasks [2]. It can take multimodal inputs, including text and images, and can handle zero, one, and few-shot tasks",
             "descriptionKeywords": ["Image Recognition"],
-            "endpoint": "http://dial-vertex/openai/deployments/gemini-pro-vision/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro-vision/chat/completions",
             "forwardAuthToken": true,
             "inputAttachmentTypes": [
                 "*/*"
@@ -607,7 +607,7 @@
             "type": "chat",
             "displayName": "Gemini 1.5 Pro",
             "iconUrl": "Gemini-Pro-Vision.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/gemini-1.5-pro-preview-0409/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-1.5-pro-preview-0409/chat/completions",
             "description": "Gemini 1.5 Pro is a multimodal AI model developed by Google DeepMind. It is a follow-up release to the initial debut of Google's Gemini 1.0 and provides an upgrade over the 1.0 models with better performance and longer context length.\n\nThe model uses a multimodal mixture-of-experts (MoE) approach, which allows it to optimize the most relevant expert pathways in its neural network for results. It can handle a large context window of up to 1 million tokens, enabling it to reason and understand larger volumes of data than other models with lower token limits. Gemini 1.5 Pro can process text, images, audio, and video, and can be used for various tasks such as building conversational AI assistants, analyzing and generating code, and more",
             "descriptionKeywords": ["Text Generation", "Image Recognition", "Continue Supported"],
 
@@ -629,7 +629,7 @@
             "type": "chat",
             "displayName": "Gemini 1.5 Flash",
             "iconUrl": "Gemini-Pro-Vision.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/gemini-1.5-flash-001/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-1.5-flash-001/chat/completions",
             "description": "Gemini 1.5 Flash is a fast and versatile multimodal model designed for scaling across diverse tasks.\n\nIt was purpose-built as the fastest, most cost-efficient model yet for high volume tasks, at scale, to address developers feedback asking for lower latency and cost. It has a higher rate limit of 1000 requests per minute (RPM) and there is no limit on the number of requests per day",
             "descriptionKeywords": ["Text Generation", "Image Recognition", "Continue Supported"],
 
@@ -651,7 +651,7 @@
             "type": "chat",
             "displayName": "Google Imagen",
             "iconUrl": "Imagen.svg",
-            "endpoint": "http://dial-vertex/openai/deployments/imagegeneration@005/chat/completions",
+            "endpoint": "http://dial-vertexai/openai/deployments/imagegeneration@005/chat/completions",
             "description": "Google Imagen is a text-to-image diffusion technology developed by Google. It is capable of delivering photorealistic outputs that are aligned and consistent with the users prompt.\n\nImagen can generate more lifelike images by using the natural distribution of its training data, instead of adopting a pre-programmed style. It is integrated with SynthID, a toolkit for watermarking and identifying AI-generated content. Imagen also has image editing capabilities like 'inpainting' and 'outpainting', which allow users to generate new content directly into the original image or extend the original image beyond its borders. This technology is available in Google Cloud’s Vertex AI, Gemini, Search Generative Experience, and a Google Labs experiment called ImageFX",
             "descriptionKeywords": ["Image Generation"],
             "forwardAuthToken": true,
@@ -664,7 +664,7 @@
         "textembedding-gecko@001": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/textembedding-gecko@001/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko@001/embeddings",
             "limits": {
                 "maxPromptTokens": 3072
             },
@@ -676,7 +676,7 @@
         "textembedding-gecko@003": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/textembedding-gecko@003/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko@003/embeddings",
             "limits": {
                 "maxPromptTokens": 2048
             },
@@ -688,7 +688,7 @@
         "text-embedding-004": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/text-embedding-004/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/text-embedding-004/embeddings",
             "limits": {
                 "maxPromptTokens": 2048
             },
@@ -700,7 +700,7 @@
         "textembedding-gecko-multilingual@001": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/textembedding-gecko-multilingual@001/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko-multilingual@001/embeddings",
             "limits": {
                 "maxPromptTokens": 2048
             },
@@ -712,7 +712,7 @@
         "text-multilingual-embedding-002": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/text-multilingual-embedding-002/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/text-multilingual-embedding-002/embeddings",
             "limits": {
                 "maxPromptTokens": 2048
             },
@@ -724,7 +724,7 @@
         "multimodalembedding@001": {
             "type": "embedding",
             "descriptionKeywords": ["Continue Supported"],
-            "endpoint": "http://dial-vertex/openai/deployments/multimodalembedding@001/embeddings",
+            "endpoint": "http://dial-vertexai/openai/deployments/multimodalembedding@001/embeddings",
             "limits": {
                 "maxPromptTokens": 2048
             },
@@ -1108,44 +1108,6 @@
                 "completion": "0.040"
             }
         },
-        "Mistral-7B-Instruct": {
-            "type": "chat",
-            "overrideName": "EPAM_small_1",
-            "displayName": "Mistral-7B-Instruct",
-            "description": "Mistral 7B Instruct is a language model with 7.3 billion parameters. It outperforms its predecessors and competitors on various benchmarks, including surpassing Llama 2 13B across all metrics and achieving superior results compared to Llama 1 34B on many benchmarks.\n\nThe model is particularly well-suited to code-related tasks, closely approaching the performance of CodeLlama 7B, while still maintaining proficiency in English language tasks. It incorporates techniques such as Grouped-Query Attention (GQA) and Sliding Window Attention (SWA), enabling faster inference times and the ability to process longer sequences",
-            "descriptionKeywords": ["Text Generation", "Continue Supported"],
-            "iconUrl": "mistral_7.svg",
-            "endpoint": "https://mistral-v2-api.llm.lab.epam.com/v1/chat/completions",
-            "limits": {
-                "maxTotalTokens": 32000
-            },
-            "features": {
-                "systemPromptSupported": false
-            }
-        },
-        "Mixtral-8x7B-Instruct-v0.1": {
-            "type": "chat",
-            "overrideName": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            "displayName": "Mixtral-8x7B-Instruct-v0.1",
-            "description": "Mixtral-8x7B-Instruct-v0.1 is a Large Language Model (LLM) developed by mistralai. It's a pretrained, generative model designed to produce high-quality text outputs.\n\nThis model is a Sparse Mixture of Experts (SMoE) and it outperforms many of its predecessors like Llama 2 70B in most benchmarks, demonstrating its efficiency and capability in handling a wide array of language processing tasks. It's a game-changer in the world of language processing, bringing with it a wide array of exciting applications",
-            "descriptionKeywords": ["Text Generation", "Continue Supported"],
-            "iconUrl": "mistral_7.svg",
-            "endpoint": "https://mixtral-api.llm.lab.epam.com/v1/chat/completions",
-            "limits": {
-                "maxTotalTokens": 32000
-            },
-            "features": {
-                "systemPromptSupported": false
-            }
-        },
-        "CodeLlama-34b-Instruct-hf": {
-            "type": "chat",
-            "displayName": "CodeLlama-34b",
-            "description": "CodeLlama-34b-Instruct-hf is a part of the Code Llama collection of pretrained and fine-tuned generative text models.\n\n This specific model, with 34 billion parameters, is designed for general code synthesis and understanding. It is available in the Hugging Face Transformers format ",
-            "descriptionKeywords": ["Development", "Continue Supported"],
-            "iconUrl": "Llama2_code.svg",
-            "endpoint": "https://codellama-api.llm.lab.epam.com/v1/chat/completions"
-        },
         "meta.llama3": {
             "type": "chat",
             "displayName": "Llama 3",
@@ -1521,12 +1483,6 @@
                 "dall-e-3": {
                     "minute": "3",
                     "day": "1000"
-                },
-                "Mistral-7B-Instruct": {},
-                "Mixtral-8x7B-Instruct-v0.1": {},
-                "CodeLlama-34b-Instruct-hf": {
-                    "minute": "100000000",
-                    "day": "100000000"
                 },
                 "meta.llama2-70b-chat-v1": {},
                 "meta.llama2": {},

@@ -113,15 +113,15 @@ chat:
     RECENT_MODELS_IDS: "gpt-35-turbo,gpt-4"
     AUTH_AUTH0_HOST: "https://aidial.us.auth0.com"  # ToDO
     AUTH_AUTH0_NAME: "Auth0 SSO"
-    AUTH_AUTH0_AUDIENCE: "chat"
+    AUTH_AUTH0_AUDIENCE: "test_gke_dial"
     ANNOUNCEMENT_HTML_MESSAGE: 'Welcome to <a href="about:blank" target="_blank">AI Dial</a>! Unified AI Access for Enterprises. Secure, scalable and customizable enterprise-grade AI ecosystem that seamlessly integrates with your data and workflows, tailored to achieve your unique business objectives.'
     # TRACES_URL: "http://grafana-agent-otel.monitoring.svc.cluster.local.:4318/v1/traces" # ToDO
-  resources:
-    limits:
-      memory: 2Gi
-    requests:
-      cpu: 0.5
-      memory: 512Mi
+  # resources:
+  #   limits:
+  #     memory: 2Gi
+  #   requests:
+  #     cpu: 0.5
+  #     memory: 512Mi
 
   ingress:
     enabled: true
