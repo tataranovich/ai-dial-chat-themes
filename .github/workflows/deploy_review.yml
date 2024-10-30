@@ -2,7 +2,12 @@ name: Deploy Review
 
 on:
   pull_request_target:
-    branches: [development]
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches: 
+      - development
 
 jobs:
   create_env:
