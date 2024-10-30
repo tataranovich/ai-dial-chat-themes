@@ -1,13 +1,14 @@
 name: Deploy Review
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [development]
 
 jobs:
   create_env:
     uses: alexey-ban/ai-dial-ci/.github/workflows/gh_env.yml@review_env
-    secrets: inherit
+    secrets:
+      ACTIONS_BOT_TOKEN: ${{ secrets.ACTIONS_BOT_TOKEN }}
     with:
       environment_create: true
 
