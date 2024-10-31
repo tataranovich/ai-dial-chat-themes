@@ -1,0 +1,1522 @@
+{
+    "addons": {
+        "addon-xweather": {
+            "endpoint": "https://openai-plugin.xweather.com/.well-known/ai-plugin.json",
+            "displayName": "Xweather",
+            "iconUrl": "xweather.svg",
+            "description": "XWeather gives weather information for a location.  Ask for the current weather, a 5-day forecast, or a radar image."
+        }
+    },
+    "assistant": {
+        "endpoint": "http://assistant.dial-development.svc.cluster.local/openai/deployments/assistant/chat/completions"
+    },
+    "applications": {},
+    "models": {
+        "text-embedding-3-large": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/text-embedding-3-large/embeddings",
+            "limits": {
+                "maxPromptTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000013"
+            }
+        },
+        "text-embedding-3-small": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/text-embedding-3-small/embeddings",
+            "limits": {
+                "maxPromptTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000002"
+            }
+        },
+        "text-embedding-ada-002": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/text-embedding-ada-002/embeddings",
+            "limits": {
+                "maxPromptTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000001"
+            }
+        },
+        "gpt-35-turbo": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "Latest",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo/chat/completions",
+            "limits": {
+                "maxTotalTokens": 16385
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000003",
+                "completion": "0.000004"
+            }
+        },
+        "gpt-35-turbo-16k": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "16K 0613",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo-16k/chat/completions",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 16385
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000003",
+                "completion": "0.000004"
+            }
+        },
+        "gpt-35-turbo-0301": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "0301",
+            "tokenizerModel": "gpt-3.5-turbo-0301",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo/chat/completions",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000015",
+                "completion": "0.000002"
+            }
+        },
+        "gpt-35-turbo-0613": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "0613",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo-0613/chat/completions",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000015",
+                "completion": "0.000002"
+            }
+        },
+        "gpt-35-turbo-1106": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "1106",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo-1106/chat/completions",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000001",
+                "completion": "0.000002"
+            }
+        },
+        "gpt-35-turbo-0125": {
+            "type": "chat",
+            "displayName": "GPT-3.5 Turbo",
+            "displayVersion": "0125",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-35-turbo-0125/chat/completions",
+            "description": "GPT-3.5 is an advanced language model developed by OpenAI, built upon its predecessor, GPT-3.\n\nIt encompasses enhanced capabilities allowing for more nuanced and context-aware text generation. With an architecture based on deep learning and transformers, GPT-3.5 can understand and generate human-like text across diverse topics, responding to prompts with greater accuracy and reduced biases compared to earlier versions. This model serves a wide range of applications from content creation and summarization to language translation and chatbots.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 16385
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000005",
+                "completion": "0.0000015"
+            }
+        },
+
+        "gpt-4": {
+            "type": "chat",
+            "displayName": "GPT-4",
+            "displayVersion": "Latest",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt4.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4/chat/completions",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00003",
+                "completion": "0.00006"
+            },
+            "features": {
+                "truncatePromptEndpoint": "http://dial-openai/openai/deployments/gpt-4/truncate_prompt"
+            }
+        },
+        "gpt-4-0613": {
+            "type": "chat",
+            "displayName": "GPT-4",
+            "displayVersion": "0613",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt4.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-0613/chat/completions",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00003",
+                "completion": "0.00006"
+            }
+        },
+        "gpt-4-turbo": {
+            "type": "chat",
+            "displayName": "GPT-4 Turbo",
+            "displayVersion": "Latest",
+            "description": "GPT-4 Turbo is an advanced version of the GPT-4 language model developed by OpenAI.\n\nIt was released as a major refinement of the existing model, with improvements in efficiency and speed [1]. GPT-4 Turbo introduced several new features, including faster responses, support for longer inputs up to 128K tokens in length, and improved knowledge of recent events [2]. It also has a larger context window compared to its predecessor, which allows it to analyze and remember more information",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "tokenizerModel": "gpt-4-0314",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-turbo/chat/completions",
+            "iconUrl": "gpt4.svg",
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        "gpt-4-turbo-2024-04-09": {
+            "type": "chat",
+            "displayName": "GPT-4 Turbo",
+            "displayVersion": "2024-04-09",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4 Turbo is an advanced version of the GPT-4 language model developed by OpenAI.\n\nIt was released as a major refinement of the existing model, with improvements in efficiency and speed [1]. GPT-4 Turbo introduced several new features, including faster responses, support for longer inputs up to 128K tokens in length, and improved knowledge of recent events [2]. It also has a larger context window compared to its predecessor, which allows it to analyze and remember more information",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "gpt4.svg",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-turbo-2024-04-09/chat/completions",
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        "gpt-4-1106-preview": {
+            "type": "chat",
+            "displayName": "GPT-4 Turbo",
+            "displayVersion": "1106-Preview",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-1106-preview/chat/completions",
+            "iconUrl": "gpt4.svg",
+            "features": {
+                "toolsSupported": true
+            },
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        "gpt-4-0125-preview": {
+            "type": "chat",
+            "displayName": "GPT-4 Turbo",
+            "displayVersion": "0125-Preview",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-0125-preview/chat/completions",
+            "iconUrl": "gpt4.svg",
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        "gpt-4o": {
+            "type": "chat",
+            "displayName": "GPT-4o (Omni)",
+            "displayVersion": "Latest",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4o is a multimodal generative pre-trained transformer developed by OpenAI and released in May 2024.\n\nIt is OpenAIs new flagship model that integrates text, vision, and audio capabilities, setting a new standard for generative and conversational AI experiences [2]. It is engineered for speed and efficiency, with an advanced ability to handle complex queries with minimal resources [3]",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4o/chat/completions",
+            "iconUrl": "gpt4.svg",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000005",
+                "completion": "0.000015"
+            }
+        },
+        "gpt-4o-2024-08-06": {
+            "type": "chat",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4o-2024-08-06/chat/completions",
+            "displayName": "GPT-4o (Omni)",
+            "displayVersion": "2024-08-06",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4o is a multimodal generative pre-trained transformer developed by OpenAI and released in May 2024.\n\nIt is OpenAI new flagship model that integrates text, vision, and audio capabilities, setting a new standard for generative and conversational AI experiences [2]. It is engineered for speed and efficiency, with an advanced ability to handle complex queries with minimal resources [3]",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "gpt4.svg",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000005",
+                "completion": "0.000015"
+            }
+        },
+        "gpt-4o-2024-05-13": {
+            "type": "chat",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4o-2024-05-13/chat/completions",
+            "displayName": "GPT-4o (Omni)",
+            "displayVersion": "2024-05-13",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "GPT-4o is a multimodal generative pre-trained transformer developed by OpenAI and released in May 2024.\n\nIt is OpenAI new flagship model that integrates text, vision, and audio capabilities, setting a new standard for generative and conversational AI experiences [2]. It is engineered for speed and efficiency, with an advanced ability to handle complex queries with minimal resources [3]",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "gpt4.svg",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        
+        "gpt-4o-mini-2024-07-18": {
+            "type": "chat",
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4o-mini-2024-07-18/chat/completions",
+            "displayName": "GPT-4o mini",
+            "displayVersion": "2024-07-18",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "The GPT-4o mini model is a smaller, faster, and cheaper version of the GPT-4o AI model developed by OpenAI.\n\nIt is designed to replace the GPT-3.5 Turbo model, which was the default for free ChatGPT users and the cheapest option for developers building applications on OpenAI technology",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "gpt4.svg",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000165",
+                "completion": "0.00066"
+            }
+        },
+        "o1-mini-2024-09-12": {
+            "type": "chat",
+            "displayName": "o1-mini",
+            "displayVersion": "2024-09-12",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "",
+            "descriptionKeywords": ["Text Generation"],
+            "iconUrl": "gpt4.svg",
+            "endpoint": "http://dial-openai/openai/deployments/o1-mini-2024-09-12/chat/completions",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.003",
+                "completion": "0.012"
+            }
+        },
+        "o1-preview-2024-09-12": {
+            "type": "chat",
+            "displayName": "o1-preview",
+            "displayVersion": "2024-09-12",
+            "tokenizerModel": "gpt-4-0314",
+            "description": "",
+            "descriptionKeywords": ["Text Generation"],
+            "iconUrl": "gpt4.svg",
+            "endpoint": "http://dial-openai/openai/deployments/o1-preview-2024-09-12/chat/completions",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.015",
+                "completion": "0.06"
+            }
+        },
+        "gpt-4-32k-0613": {
+            "type": "chat",
+            "displayName": "GPT-4",
+            "displayVersion": "32K 0613",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt4.svg",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-32k-0613/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00006",
+                "completion": "0.00012"
+            }
+        },
+        "dall-e-3": {
+            "type": "chat",
+            "displayName": "DALL-E 3",
+            "iconUrl": "gpt3.svg",
+            "endpoint": "http://dial-openai/openai/deployments/dall-e-3/chat/completions",
+            "description": "DALL-E is a machine-learning model developed by OpenAI. It is designed to produce images from language descriptions, a process known as text-to-image descriptions or prompts.\n\nThe system can generate realistic images just from a description of the scene. DALL-E is a neural network algorithm that creates accurate pictures from short phrases provided by the user. It comprehends language through textual descriptions and from “learning” information provided in its datasets by users and developers.",
+            "descriptionKeywords": ["Image Generation"],
+            "forwardAuthToken": true,
+            "pricing": {
+                "unit": "token",
+                "prompt": "0",
+                "completion": "0.02"
+            },
+            "features": {
+                "systemPromptSupported": false
+            }
+        },
+        "gpt-4-vision-preview": {
+            "type": "chat",
+            "displayName": "GPT-4 Vision",
+            "tokenizerModel": "gpt-4-1106-vision-preview",
+            "iconUrl": "GPT-4-V.svg",
+            "description": "GPT-4 Vision, also known as GPT-4V, is a feature of the AI chatbot developed by OpenAI. This feature allows the chatbot to read and respond to image prompts, not just text prompts, making it a multimodal large language model.",
+            "descriptionKeywords": ["Image Recognition", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-vision-preview/chat/completions",
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001",
+                "completion": "0.00003"
+            }
+        },
+        "chat-bison": {
+            "type": "chat",
+            "displayName": "PaLM2",
+            "displayVersion": "Latest",
+            "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "palm2.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison-32k@002/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768,
+                "maxCompletionTokens": 8192
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "chat-bison@001": {
+            "type": "chat",
+            "displayName": "PaLM2",
+            "displayVersion": "Bison@001",
+            "iconUrl": "palm2.svg",
+            "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
+            "descriptionKeywords": ["Text Generation"],
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison@001/chat/completions",
+            "limits": {
+                "maxPromptTokens": 4096,
+                "maxCompletionTokens": 1024
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "chat-bison-32k@002": {
+            "type": "chat",
+            "displayName": "PaLM2",
+            "displayVersion": "Bison-32k@002",
+            "iconUrl": "palm2.svg",
+            "description": "Chat-bison is a model code for a generative AI model used in chat applications. It is part of the Vertex AI offerings from Google Cloud.\n\nThe model is designed to generate responses in a chat session based on the most recent author message. The chat session history includes all the messages before the most recent message. The model is also capable of handling tasks such as code generation, text generation, text editing, problem solving, recommendations generation, information extraction, data extraction or generation, and AI agent tasks",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/chat-bison-32k@002/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768,
+                "maxCompletionTokens": 8192
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "codechat-bison": {
+            "type": "chat",
+            "displayName": "PaLM2 Code",
+            "displayVersion": "Latest",
+            "description": "Codechat-bison is a code generation model developed by Google, part of their Codey suite of tools.\n\nIt's based on the PaLM 2 language model and is designed for generating and understanding code. The model supports various applications such as code completion, codechat, documentation generation, and more, to enhance productivity and software development efficiency.",
+            "descriptionKeywords": ["Text Generation", "Development", "Continue Supported"],
+            "iconUrl": "palm2.svg",
+
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison-32k@002/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768,
+                "maxCompletionTokens": 8192
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "codechat-bison@001": {
+            "type": "chat",
+            "displayName": "PaLM2 Code",
+            "displayVersion": "Bison@001",
+            "description": "Codechat-bison is a code generation model developed by Google, part of their Codey suite of tools.\n\nIt's based on the PaLM 2 language model and is designed for generating and understanding code. The model supports various applications such as code completion, codechat, documentation generation, and more, to enhance productivity and software development efficiency.",
+            "descriptionKeywords": ["Text Generation", "Development"],
+            "iconUrl": "palm2.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison@001/chat/completions",
+            "limits": {
+                "maxPromptTokens": 6144,
+                "maxCompletionTokens": 1024
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            },
+            "userRoles": [
+                "8d7bfafd-059e-4da6-84af-017f34504d0a"
+            ]
+        },
+        "codechat-bison-32k@002": {
+            "type": "chat",
+            "displayName": "PaLM2 Code",
+            "displayVersion": "Bison-32k@002",
+            "iconUrl": "palm2.svg",
+            "description": "Codechat-bison is a code generation model developed by Google, part of their Codey suite of tools.\n\nIt's based on the PaLM 2 language model and is designed for generating and understanding code. The model supports various applications such as code completion, codechat, documentation generation, and more, to enhance productivity and software development efficiency.",
+            "descriptionKeywords": ["Text Generation", "Development", "Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/codechat-bison-32k@002/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768,
+                "maxCompletionTokens": 8192
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "gemini-pro": {
+            "type": "chat",
+            "displayName": "Gemini Pro",
+            "iconUrl": "Gemini.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro/chat/completions",
+            "description": "Gemini Pro is a version of Google's Gemini AI model. It is designed to power Google's Gemini assistant and is used in the paid AI chatbot service, Gemini Advanced.\n\nThis model can deliver fast response times and understand complex queries. Developers can customize Gemini Pro to specific contexts and use cases via a fine-tuning or grounding process. For example, it can be instructed to use data from third-party providers or source information from corporate datasets or Google Search instead of its wider knowledge bank. Gemini Pro can also be connected to external, third-party APIs to perform particular actions, like automating a back-office workflow. It can reason across 100,000 lines of code and provide helpful solutions, modifications, and explanations",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "limits": {
+                "maxPromptTokens": 32000,
+                "maxCompletionTokens": 8192
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            }
+        },
+        "gemini-pro-vision": {
+            "type": "chat",
+            "displayName": "Gemini Pro Vision",
+            "iconUrl": "Gemini-Pro-Vision.svg",
+            "description": "Gemini Pro Vision is a product of Google's Large Language Model (LLM) known as Gemini. It is a powerful model capable of dealing with multiple modalities of data such as image, video, sound, etc.\n\nIt is available in Bard through the MakerSuite UI and their Python Software Development Kit (SDK) [1]. Gemini Pro Vision is marketed as an all-purpose Vision model that can solve a wide range of tasks [2]. It can take multimodal inputs, including text and images, and can handle zero, one, and few-shot tasks",
+            "descriptionKeywords": ["Image Recognition"],
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-pro-vision/chat/completions",
+            "forwardAuthToken": true,
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "limits": {
+                "maxPromptTokens": 16000,
+                "maxCompletionTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.0000005"
+            },
+            "features": {
+                "systemPromptSupported": false
+            }
+        },
+        "gemini-1.5-pro-preview-0409": {
+            "type": "chat",
+            "displayName": "Gemini 1.5 Pro",
+            "iconUrl": "Gemini-Pro-Vision.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-1.5-pro-preview-0409/chat/completions",
+            "description": "Gemini 1.5 Pro is a multimodal AI model developed by Google DeepMind. It is a follow-up release to the initial debut of Google's Gemini 1.0 and provides an upgrade over the 1.0 models with better performance and longer context length.\n\nThe model uses a multimodal mixture-of-experts (MoE) approach, which allows it to optimize the most relevant expert pathways in its neural network for results. It can handle a large context window of up to 1 million tokens, enabling it to reason and understand larger volumes of data than other models with lower token limits. Gemini 1.5 Pro can process text, images, audio, and video, and can be used for various tasks such as building conversational AI assistants, analyzing and generating code, and more",
+            "descriptionKeywords": ["Text Generation", "Image Recognition", "Continue Supported"],
+
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "forwardAuthToken": true,
+            "limits": {
+                "maxTotalTokens": 999000,
+                "maxCompletionTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.0000025",
+                "completion": "0.0000075"
+            }
+        },
+        "gemini-1.5-flash-001": {
+            "type": "chat",
+            "displayName": "Gemini 1.5 Flash",
+            "iconUrl": "Gemini-Pro-Vision.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/gemini-1.5-flash-001/chat/completions",
+            "description": "Gemini 1.5 Flash is a fast and versatile multimodal model designed for scaling across diverse tasks.\n\nIt was purpose-built as the fastest, most cost-efficient model yet for high volume tasks, at scale, to address developers feedback asking for lower latency and cost. It has a higher rate limit of 1000 requests per minute (RPM) and there is no limit on the number of requests per day",
+            "descriptionKeywords": ["Text Generation", "Image Recognition", "Continue Supported"],
+
+            "inputAttachmentTypes": [
+                "*/*"
+            ],
+            "forwardAuthToken": true,
+            "limits": {
+                "maxTotalTokens": 999000,
+                "maxCompletionTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000025",
+                "completion": "0.00000075"
+            }
+        },
+        "imagegeneration@005": {
+            "type": "chat",
+            "displayName": "Google Imagen",
+            "iconUrl": "Imagen.svg",
+            "endpoint": "http://dial-vertexai/openai/deployments/imagegeneration@005/chat/completions",
+            "description": "Google Imagen is a text-to-image diffusion technology developed by Google. It is capable of delivering photorealistic outputs that are aligned and consistent with the users prompt.\n\nImagen can generate more lifelike images by using the natural distribution of its training data, instead of adopting a pre-programmed style. It is integrated with SynthID, a toolkit for watermarking and identifying AI-generated content. Imagen also has image editing capabilities like 'inpainting' and 'outpainting', which allow users to generate new content directly into the original image or extend the original image beyond its borders. This technology is available in Google Cloud’s Vertex AI, Gemini, Search Generative Experience, and a Google Labs experiment called ImageFX",
+            "descriptionKeywords": ["Image Generation"],
+            "forwardAuthToken": true,
+            "pricing": {
+                "unit": "token",
+                "prompt": "0",
+                "completion": "0.02"
+            }
+        },
+        "textembedding-gecko@001": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko@001/embeddings",
+            "limits": {
+                "maxPromptTokens": 3072
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000002"
+            }
+        },
+        "textembedding-gecko@003": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko@003/embeddings",
+            "limits": {
+                "maxPromptTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000002"
+            }
+        },
+        "text-embedding-004": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/text-embedding-004/embeddings",
+            "limits": {
+                "maxPromptTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000002"
+            }
+        },
+        "textembedding-gecko-multilingual@001": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/textembedding-gecko-multilingual@001/embeddings",
+            "limits": {
+                "maxPromptTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000002"
+            }
+        },
+        "text-multilingual-embedding-002": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/text-multilingual-embedding-002/embeddings",
+            "limits": {
+                "maxPromptTokens": 2048
+            },
+            "pricing": {
+                "unit": "char_without_whitespace",
+                "prompt": "0.00000002"
+            }
+        },
+        "multimodalembedding@001": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-vertexai/openai/deployments/multimodalembedding@001/embeddings",
+            "limits": {
+                "maxPromptTokens": 2048
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000002"
+            }
+        },
+        "amazon.titan-tg1-large": {
+            "type": "chat",
+            "displayName": "Amazon Titan",
+            "iconUrl": "awc.svg",
+            "description": "The amazon.titan-tg1-large is a model from Amazon Titan, a family of Foundation Models pretrained by AWS for various use cases.\n\nIt is suitable for text generation [1]. Amazon Titan models are powerful, general-purpose models built to support a variety of use cases. They are pretrained by AWS on large datasets [2].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/amazon.titan-tg1-large/chat/completions",
+            "limits": {
+                "maxTotalTokens": 8192
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000013",
+                "completion": "0.0000017"
+            }
+        },
+        "amazon.titan-embed-text-v1": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/amazon.titan-embed-text-v1/embeddings",
+            "limits": {
+                "maxPromptTokens": 8000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000001"
+            }
+        },
+        "amazon.titan-embed-text-v2:0": {
+            "type": "embedding",
+            "descriptionKeywords": ["Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/amazon.titan-embed-text-v2:0/embeddings",
+            "limits": {
+                "maxPromptTokens": 8000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000002"
+            }
+        },
+        "amazon.titan-embed-image-v1": {
+            "type": "embedding",
+            "endpoint": "http://dial-bedrock/openai/deployments/amazon.titan-embed-image-v1/embeddings",
+            "limits": {
+                "maxPromptTokens": 128
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000008"
+            }
+        },
+        "ai21.j2-grande-instruct": {
+            "type": "chat",
+            "displayName": "AI21 Jurassic-2",
+            "displayVersion": "Grande",
+            "iconUrl": "ai21_j2.svg",
+            "description": "J2-Grande-Instruct is a model designed specifically for generating text based on minimal context.\n\nIt is highly accurate and can be fine-tuned to power smart chatbots and other conversational interfaces. It is part of the Jurassic-2 (J2) series of Large Language Models developed by AI21 Labs",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/ai21.j2-grande-instruct/chat/completions",
+            "limits": {
+                "maxTotalTokens": 8191
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000125",
+                "completion": "0.0000125"
+            }
+        },
+        "ai21.j2-jumbo-instruct": {
+            "type": "chat",
+            "displayName": "AI21 Jurassic-2",
+            "displayVersion": "Jumbo",
+            "iconUrl": "ai21_j2.svg",
+            "description": "J2-Jumbo-Instruct is a part of the Jurassic-2 series of Large Language Models developed by AI21 Labs.\n\nIt is similar to the J2-Grande-Instruct model, but it has superior language understanding and response generation capabilities. This model is ideal for users with more advanced conversational interface needs [1]. It is designed to generate text based on minimal context and is highly accurate. It can be fine-tuned to power smart chatbots and other conversational interfaces [1].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/ai21.j2-jumbo-instruct/chat/completions",
+            "limits": {
+                "maxPromptTokens": 8191
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000188",
+                "completion": "0.0000188"
+            }
+        },
+        "anthropic.claude": {
+            "type": "chat",
+            "displayName": "Anthropic Claude",
+            "displayVersion": "Latest",
+            "description": "Anthropic's Claude Sonnet is a model that offers a combination of performance and speed for efficient, high-throughput tasks.\n\nIt sets new industry benchmarks for graduate-level reasoning, undergraduate-level knowledge, and coding proficiency. It shows marked improvement in grasping nuance, humor, and complex instructions, and is exceptional at writing high-quality content with a natural, relatable tone [2]",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "anthropic.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-3-sonnet-20240229-v1:0/chat/completions",
+            "defaults": {
+                "max_tokens": 4000
+            },
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "features": {
+                "toolsSupported": false
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000300",
+                "completion": "0.00001500"
+            }
+        },
+        "anthropic.claude-instant-v1": {
+            "type": "chat",
+            "displayName": "Anthropic Claude",
+            "displayVersion": "1.2 Instant",
+            "iconUrl": "anthropic.svg",
+            "description": "Anthropic's Claude Instant 1.2 is an updated version of their AI model that generates text. It is designed to be faster, cheaper, and more accessible than its predecessor, Claude Instant 1.1.\n\nThe model incorporates the strengths of Anthropic's flagship model, Claude 2, and shows significant improvements in areas such as math, coding, reasoning, and safety. For instance, Claude Instant 1.2 scored 58.7% on a coding benchmark and 86.7% on a set of math questions, which are improvements over the scores of Claude Instant 1.1. The model is also capable of generating longer, more structured responses, following formatting instructions better, and showing improvements in quote extraction, multilingual capabilities, and question answering",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-instant-v1/chat/completions",
+            "limits": {
+                "maxPromptTokens": 100000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000163",
+                "completion": "0.00000551"
+            }
+        },
+        "anthropic.claude-v2": {
+            "type": "chat",
+            "displayName": "Anthropic Claude",
+            "displayVersion": "2.0",
+            "iconUrl": "anthropic.svg",
+            "description": "Claude 2 is a large language model-powered chatbot developed by Anthropic, an AI company.\n\nIt is an improvement on Anthropics previous AI model, Claude 1.3, particularly in terms of its ability to write code based on written instructions and the size of its “context window,” which means users can now input entire books and ask Claude 2 questions based on their content. These improvements suggest Claude 2 is now in the same league as GPT-3.5 and GPT-4, the models which power OpenAI’s ChatGPT. However, like OpenAI’s models, Claude 2 still exhibits stereotype bias and ‘hallucinates’ — in other words, it makes things up [1][2].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-v2/chat/completions",
+            "limits": {
+                "maxPromptTokens": 100000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000800",
+                "completion": "0.00002400"
+            }
+        },
+        "anthropic.claude-v2-1": {
+            "type": "chat",
+            "displayName": "Anthropic Claude",
+            "displayVersion": "2.1",
+            "iconUrl": "anthropic.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-v2:1/chat/completions",
+            "description": "Anthropic Claude 2.1 is an advanced version of the large language model-powered chatbot developed by Anthropic, an AI company.\n\nThis model is capable of recalling information very well across its 200,000 token context window, which is equivalent to around 500 pages of information. It excels at real-world retrieval tasks across longer contexts. However, it can be reluctant to answer questions based on an individual sentence in a document, especially if that sentence has been injected or is out of place. A minor prompting edit can remove this reluctance and result in excellent performance on these tasks [1]. Claude 2.1 was trained using large amounts of feedback on long document tasks that users find valuable, like summarizing an S-1 length document. This data included real tasks performed on real documents, with Claude being trained to make fewer mistakes and to avoid expressing unsupported claims [1].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "features": {
+                "toolsSupported": true
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000800",
+                "completion": "0.00002400"
+            }
+        },
+        "anthropic.claude-v3-opus": {
+            "type": "chat",
+            "displayName": "Anthropic Claude 3 Opus",
+            "iconUrl": "anthropic.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/us.anthropic.claude-3-opus-20240229-v1:0/chat/completions",
+            "description": "Anthropic's Claude 3 Opus is part of the Claude 3 model family, which is known for setting new industry benchmarks across a wide range of cognitive tasks.\n\nThe Claude 3 family includes three models: Haiku, Sonnet, and Opus, with Opus being the highest-performing model. It is capable of handling complex analysis, longer tasks with many steps, and higher-order math and coding tasks. The default version of Claude 3, Opus, has a context window of 200,000 tokens, but this is being expanded to 1 million for specific use cases",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "defaults": {
+                "max_tokens": 4000
+            },
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "features": {
+                "toolsSupported": false
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00001500",
+                "completion": "0.00007500"
+            }
+        },
+        "anthropic.claude-v3-haiku": {
+            "type": "chat",
+            "displayName": "Anthropic Claude 3 Haiku",
+            "iconUrl": "anthropic.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-3-haiku-20240307-v1:0/chat/completions",
+            "description": "Anthropic's Claude 3 Haiku is a state-of-the-art large language model that is part of the Claude 3 foundation model family.\n\nIt is the fastest and most compact model in the family, designed for near-instant responsiveness and seamless generative artificial intelligence (AI) experiences that mimic human interactions. It can read a data-dense research paper with charts and graphs in less than three seconds. Claude 3 Haiku has image-to-text vision capabilities, can understand multiple languages besides English, and boasts increased steerability in a 200k context window",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "features": {
+                "toolsSupported": false
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000025",
+                "completion": "0.00000125"
+            }
+        },
+        "anthropic.claude-v3-sonnet": {
+            "type": "chat",
+            "displayName": "Anthropic Claude 3 Sonnet",
+            "iconUrl": "anthropic.svg",
+            "description": "Anthropic's Claude Sonnet is a model that offers a combination of performance and speed for efficient, high-throughput tasks.\n\nIt sets new industry benchmarks for graduate-level reasoning, undergraduate-level knowledge, and coding proficiency. It shows marked improvement in grasping nuance, humor, and complex instructions, and is exceptional at writing high-quality content with a natural, relatable tone [2]",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-3-sonnet-20240229-v1:0/chat/completions",
+            "defaults": {
+                "max_tokens": 4000
+            },
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "features": {
+                "toolsSupported": false
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000300",
+                "completion": "0.00001500"
+            }
+        },
+        "anthropic.claude-v3-5-sonnet": {
+            "type": "chat",
+            "displayName": "Anthropic Claude 3.5 Sonnet",
+            "iconUrl": "anthropic.svg",
+            "description": "Anthropic's Claude 3.5 Sonnet is a significant advancement in the field of generative AI and large language models (LLMs).\n\nIt is known for its unprecedented intelligence, enhanced speed, and advanced capabilities across various domains. The model sets a new standard for what AI can achieve, with sophisticated reasoning and coding abilities, a commitment to safety, and a focus on user-driven development",
+            "descriptionKeywords": ["Text Generation", "Image Recognition", "Continue Supported"],
+
+            "endpoint": "http://dial-bedrock/openai/deployments/anthropic.claude-3-5-sonnet-20240620-v1:0/chat/completions",
+            "defaults": {
+                "max_tokens": 4000
+            },
+            "inputAttachmentTypes": [
+                "image/*"
+            ],
+            "features": {
+                "toolsSupported": false
+            },
+            "limits": {
+                "maxPromptTokens": 200000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000300",
+                "completion": "0.00001500"
+            }
+        },
+        "meta.llama2": {
+            "type": "chat",
+            "displayName": "Llama 2",
+            "displayVersion": "Latest",
+            "description": "Llama 2 is a family of pre-trained and fine-tuned large language models (LLMs) developed by Meta AI, the parent company of Facebook.\n\nThese models range in scale from 7B to 70B parameters. Llama 2 models are optimized for dialogue use cases and are said to outperform open-source chat models on most benchmarks tested by Meta AI. They are fine-tuned for programming tasks and can be adapted for a variety of natural language generation tasks ",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama2-70b-chat-v1/chat/completions",
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000195",
+                "completion": "0.00000256"
+            }
+        },
+        "meta.llama2-13b-chat-v1": {
+            "type": "chat",
+            "displayName": "Llama 2",
+            "displayVersion": "Chat 13B",
+            "description": "Llama 2 is a family of pre-trained and fine-tuned large language models (LLMs) developed by Meta AI, the parent company of Facebook.\n\nThese models range in scale from 7B to 70B parameters. Llama 2 models are optimized for dialogue use cases and are said to outperform open-source chat models on most benchmarks tested by Meta AI. They are fine-tuned for programming tasks and can be adapted for a variety of natural language generation tasks ",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama2-13b-chat-v1/chat/completions",
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000075",
+                "completion": "0.00000100"
+            }
+        },
+        "meta.llama2-70b-chat-v1": {
+            "type": "chat",
+            "displayName": "Llama 2",
+            "displayVersion": "Chat 70B",
+            "iconUrl": "Llama2.svg",
+            "description": "Llama 2 is a family of pre-trained and fine-tuned large language models (LLMs) developed by Meta AI, the parent company of Facebook.\n\nThese models range in scale from 7B to 70B parameters. Llama 2 models are optimized for dialogue use cases and are said to outperform open-source chat models on most benchmarks tested by Meta AI. They are fine-tuned for programming tasks and can be adapted for a variety of natural language generation tasks ",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama2-70b-chat-v1/chat/completions",
+            "limits": {
+                "maxTotalTokens": 4096
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000195",
+                "completion": "0.00000256"
+            }
+        },
+        "cohere.command-text-v14": {
+            "type": "chat",
+            "displayName": "Cohere Command Text V14",
+            "iconUrl": "Cohere.svg",
+            "description": "The cohere.command-text-v14 is a model provided by Cohere. It is one of the models that can be invoked on Amazon Bedrock for text generation tasks. \n \n However, it's important to note that the input for this model should not be the same as the input for Amazon Titan Model, as it can lead to schema errors",            
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/cohere.command-text-v14/chat/completions",
+            "limits": {
+                "maxTotalTokens": 4000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000015",
+                "completion": "0.0000020"
+            }
+        },
+        "cohere.embed-english-v3": {
+            "type": "embedding",
+            "endpoint": "http://dial-bedrock/openai/deployments/cohere.embed-english-v3/embeddings",
+            "limits": {
+                "maxPromptTokens": 512
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000001"
+            }
+        },
+        "cohere.embed-multilingual-v3": {
+            "type": "embedding",
+            "endpoint": "http://dial-bedrock/openai/deployments/cohere.embed-multilingual-v3/embeddings",
+            "limits": {
+                "maxPromptTokens": 512
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000001"
+            }
+        },
+        "stability.stable-diffusion-xl": {
+            "type": "chat",
+            "displayName": "Stable Diffusion XL",
+            "iconUrl": "Stable-Diffusion.svg",
+            "description": "Stable Diffusion XL, also known as SDXL, is the next-generation open weights AI image synthesis model released by Stability AI.\n\nIt represents a significant advancement in image generation capabilities compared to previous versions of Stable Diffusion, offering higher-resolution imagery and more detailed outputs. It is an open-source diffusion model that is a significant upgrade to Stable Diffusion v2.1. The model focuses on being versatile for creating images in a wide variety of styles and allows people to fine-tune it easily according to their aesthetic preferences",
+            "descriptionKeywords": ["Image Generation"],
+            "endpoint": "http://dial-bedrock/openai/deployments/stability.stable-diffusion-xl-v1/chat/completions",
+            "forwardAuthToken": true,
+            "limits": {
+                "maxPromptTokens": 77
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000",
+                "completion": "0.040"
+            }
+        },
+        "meta.llama3": {
+            "type": "chat",
+            "displayName": "Llama 3",
+            "displayVersion": "Latest",
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-70b-instruct-v1:0/chat/completions",
+            "description": "Meta Llama 3 is the next generation of Llama, a language model developed by Meta. It features pretrained and instruction-fine-tuned language models with 8B and 70B parameters that can support a broad range of use cases.\n\nThis new generation of Llama demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning. Meta Llama 3 is available for broad use and is considered one of the best open source models of its class. It is part of Meta's commitment to an open approach, and is intended to spur innovation in AI across various areas, from applications to developer tools to evaluations to inference optimizations and more [1].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "limits": {
+                "maxTotalTokens": 8000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000265",
+                "completion": "0.0000035"
+            }
+        },
+        "meta.llama3-8b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3",
+            "displayVersion": "8B Instruct",
+            "description": "Meta Llama 3-8B-Instruct is a large language model developed by Meta. It is part of the Meta Llama 3 family of models, which are pretrained and instruction tuned generative text models.\n\nThe Llama 3-8B-Instruct model is optimized for dialogue use cases and outperforms many of the available open source chat models on common industry benchmarks. It can be used for a variety of tasks such as question answering, language translation, sentiment analysis, and more. The model can be accessed using code examples in the AWS Command Line Interface (AWS CLI) and AWS SDKs, and it is also available in Amazon Bedrock for text generation [1][2]. The model was released on April 18, 2024 [3].",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-8b-instruct-v1:0/chat/completions",
+            "limits": {
+                "maxTotalTokens": 8000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0000004",
+                "completion": "0.0000006"
+            }
+        },
+        "meta.llama3-70b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3",
+            "displayVersion": "70B Instruct",
+            "iconUrl": "Llama2.svg",
+            "description": "EPAM hosted Llama3 70b model with 4bit AWQ quantization for a better cost. Context Length: 8k tokens.\n\nThe Llama 3 instruction tuned models are optimized for dialogue use cases and outperform many of the available open source chat models on common industry benchmarks.\n\nEPAM hosted Llama3 70b model with 4bit AWQ quantization for a better cost. Context Length: 8k tokens. The Llama 3 instruction tuned models are optimized for dialogue use cases and outperform many of the available open source chat models on common industry benchmarks.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-70b-instruct-v1:0/chat/completions",
+            "limits": {
+                "maxTotalTokens": 8000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000265",
+                "completion": "0.0000035"
+            }
+        },
+        "meta.llama3-1-405b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3.1",
+            "displayVersion": "405B Instruct",
+            "description": "Meta.llama3-1-405b-instruct-v1 is a part of the Llama 3.1 models released by Meta. It is the worlds largest publicly available large language model (LLM) and sets a new standard for AI.\n\nThis model is ideal for enterprise-level applications and research and development (R&D). It excels at tasks like synthetic data generation, general knowledge, long-form text generation, multilingual translation, machine translation, coding, math, tool use, enhanced contextual understanding, and advanced reasoning and decision-making [1]. It is also the first openly available model that rivals the top AI models when it comes to state-of-the-art capabilities in general knowledge, steerability, math, tool use, and multilingual translation",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-1-405b-instruct-v1:0/chat/completions",
+            "upstreams": [
+                {
+                    "extraData": {
+                        "region": "us-west-2"
+                    }
+                }
+            ],
+            "limits": {
+                "maxTotalTokens": 128000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000532",
+                "completion": "0.000016"
+            }
+        },
+        "meta.llama3-1-70b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3.1",
+            "displayVersion": "70B Instruct",
+            "description": "Meta.llama3-1-70b-instruct-v1 is a part of the Llama 3.1 models released by Meta. It is the worlds largest publicly available large language model (LLM) and sets a new standard for AI.\n\nThis model is ideal for enterprise-level applications and research and development (R&D). It excels at tasks like synthetic data generation, general knowledge, long-form text generation, multilingual translation, machine translation, coding, math, tool use, enhanced contextual understanding, and advanced reasoning and decision-making [1]. It is also the first openly available model that rivals the top AI models when it comes to state-of-the-art capabilities in general knowledge, steerability, math, tool use, and multilingual translation",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-1-70b-instruct-v1:0/chat/completions",
+            "upstreams": [
+                {
+                    "extraData": {
+                        "region": "us-west-2"
+                    }
+                }
+            ],
+            "limits": {
+                "maxTotalTokens": 128000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000099",
+                "completion": "0.00000099"
+            }
+        },
+        "meta.llama3-1-8b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3.1",
+            "displayVersion": "8B Instruct",
+            "description": "Meta.llama3-1-8b-instruct-v1 is a part of the Llama 3.1 models released by Meta. It is the worlds largest publicly available large language model (LLM) and sets a new standard for AI.\n\nThis model is ideal for enterprise-level applications and research and development (R&D). It excels at tasks like synthetic data generation, general knowledge, long-form text generation, multilingual translation, machine translation, coding, math, tool use, enhanced contextual understanding, and advanced reasoning and decision-making [1]. It is also the first openly available model that rivals the top AI models when it comes to state-of-the-art capabilities in general knowledge, steerability, math, tool use, and multilingual translation",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/meta.llama3-1-8b-instruct-v1:0/chat/completions",
+            "upstreams": [
+                {
+                    "extraData": {
+                        "region": "us-west-2"
+                    }
+                }
+            ],
+            "limits": {
+                "maxTotalTokens": 128000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00000022",
+                "completion": "0.00000022"
+            }
+        },
+        "meta.llama3-2-90b-instruct-v1": {
+            "type": "chat",
+            "displayName": "Llama 3.2",
+            "displayVersion": "90B Instruct",
+            "description": "test",
+            "descriptionKeywords": ["Text Generation"],
+            "iconUrl": "Llama2.svg",
+            "endpoint": "http://dial-bedrock/openai/deployments/us.meta.llama3-2-90b-instruct-v1:0/chat/completions",
+            "limits": {
+                "maxTotalTokens": 128000
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.0",
+                "completion": "0.0"
+            }
+        }
+    },
+    "roles": {
+        "default": {
+            "limits": {
+                "text-embedding-3-large": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "text-embedding-3-small": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "text-embedding-ada-002": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo-0301": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo-0613": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo-1106": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo-0125": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-35-turbo-16k": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
+                "gpt-4-0613": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-1106-preview": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-0125-preview": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-turbo-2024-04-09": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4o": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4o-2024-05-13": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4o-2024-08-06": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4o-mini-2024-07-18": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-turbo": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-32k-0613": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gpt-4-vision-preview": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "chat-bison@001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "chat-bison-32k@002": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "chat-bison": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "codechat-bison@001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "codechat-bison-32k@002": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "codechat-bison": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gemini-pro": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gemini-pro-vision": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gemini-1.5-pro-preview-0409": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "gemini-1.5-flash-001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "imagegeneration@005": {
+                    "minute": "3",
+                    "day": "1000"
+                },
+                "textembedding-gecko@001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "textembedding-gecko@003": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "text-embedding-004": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "textembedding-gecko-multilingual@001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "text-multilingual-embedding-002": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "multimodalembedding@001": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "amazon.titan-tg1-large": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "amazon.titan-embed-text-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "amazon.titan-embed-text-v2:0": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "amazon.titan-embed-image-v1": {
+                    "minute": "640",
+                    "day": "10000"
+                },
+                "ai21.j2-grande-instruct": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "ai21.j2-jumbo-instruct": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-instant-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v2": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v2-1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v3-opus": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v3-haiku": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v3-sonnet": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude-v3-5-sonnet": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "anthropic.claude": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "cohere.command-text-v14": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "cohere.embed-english-v3": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "cohere.embed-multilingual-v3": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "stability.stable-diffusion-xl": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "addon-xweather": {},
+                "dall-e-3": {
+                    "minute": "3",
+                    "day": "1000"
+                },
+                "meta.llama2-70b-chat-v1": {},
+                "meta.llama2": {},
+                "meta.llama2-13b-chat-v1": {},
+                "research-assistant": {},
+                "meta.llama3": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-8b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-70b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-1-405b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-1-70b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-1-8b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "meta.llama3-2-90b-instruct-v1": {
+                    "minute": "64000",
+                    "day": "1000000"
+                }
+            }
+        }
+    }
+}
