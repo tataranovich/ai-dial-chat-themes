@@ -5,6 +5,12 @@
             "displayName": "Xweather",
             "iconUrl": "xweather.svg",
             "description": "XWeather gives weather information for a location.  Ask for the current weather, a 5-day forecast, or a radar image."
+        },
+        "addon-wolfram": {
+            "endpoint": "https://dev-dial-chat-themes-epam.staging.deltixhub.io/wolfram/.well-known/ai-plugin.json",
+            "displayName": "Wolfram",
+            "iconUrl": "Addon_Wolfram.svg",
+            "description": "Addon that provides access to the computation, math, curated knowledge & real-time data through Wolfram|Alpha and Wolfram Language."
         }
     },
     "assistant": {
@@ -100,6 +106,24 @@
                 "unit": "token",
                 "prompt": "0.0000015",
                 "completion": "0.000002"
+            }
+        },
+        "gpt-4-32k-0314": {
+            "type": "chat",
+            "displayName": "GPT-4",
+            "displayVersion": "32K 0314",
+            "tokenizerModel": "gpt-4-0314",
+            "iconUrl": "gpt4.svg",
+            "description": "GPT-4 is the next-generation AI language model developed by OpenAI.\n\nIt has several new capabilities compared to its predecessors. One of the most significant differences is that GPT-4 is multimodal, meaning it can process both images and text, whereas previous versions like GPT-3.5 could only process text. This allows GPT-4 to analyze the contents of an image and connect that information with a written question. It is also generally better at creative tasks and problem-solving.",
+            "descriptionKeywords": ["Text Generation", "Continue Supported"],
+            "endpoint": "http://dial-openai/openai/deployments/gpt-4-32k-0314/chat/completions",
+            "limits": {
+                "maxTotalTokens": 32768
+            },
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.00006",
+                "completion": "0.00012"
             }
         },
         "gpt-35-turbo-0613": {
@@ -448,6 +472,17 @@
                 "unit": "token",
                 "prompt": "0.00001",
                 "completion": "0.00003"
+            }
+        },
+        "mistral-large-azure": {
+            "type": "chat",
+            "displayName": "Mistral Large",
+            "iconUrl": "mistral_7.svg",
+            "endpoint": "http://dial-openai/openai/deployments/mistral-large-azure/chat/completions",
+            "pricing": {
+                "unit": "token",
+                "prompt": "0.000008",
+                "completion": "0.000024"
             }
         },
         "chat-bison": {
@@ -1275,6 +1310,10 @@
                     "minute": "256000",
                     "day": "1000000"
                 },
+                "gpt-4-32k-0314": {
+                    "minute": "256000",
+                    "day": "1000000"
+                },
                 "gpt-35-turbo-0613": {
                     "minute": "256000",
                     "day": "1000000"
@@ -1344,6 +1383,10 @@
                     "day": "1000000"
                 },
                 "chat-bison-32k@002": {
+                    "minute": "64000",
+                    "day": "1000000"
+                },
+                "mistral-large-azure": {
                     "minute": "64000",
                     "day": "1000000"
                 },
