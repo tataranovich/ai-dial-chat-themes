@@ -1,6 +1,7 @@
 # Trivy configuration file
 # https://aquasecurity.github.io/trivy/latest/docs/references/configuration/config-file/
 # Can be deleted after public ecr mirror will be added by default
+
 db:
   no-progress: true
   repository:
