@@ -15,10 +15,10 @@ jobs:
           config: >
             [
               {
-                "command": "deploy-review",
+                "command": "github-deploy-review",
                 "permission": "write",
                 "issue_type": "pull-request",
-                "repository": "epam/ai-dial-ci",
+                "repository": "tataranovich/ai-dial-ci",
                 "static_args": [
                   "application=${{ github.event.repository.name }}"
                 ]

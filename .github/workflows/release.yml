@@ -1,10 +1,10 @@
-name: Release Workflow
+# name: Release Workflow
 
-on:
-  push:
-    branches: [development, release-*]
+# on:
+#   push:
+#     branches: [development, release-*]
 
-jobs:
-  release:
-    uses: epam/ai-dial-ci/.github/workflows/generic_docker_release.yml@1.9.4
-    secrets: inherit
+# jobs:
+#   release:
+#     uses: epam/ai-dial-ci/.github/workflows/generic_docker_release.yml@1.9.4
+#     secrets: inherit
