@@ -2,7 +2,8 @@ name: E2E tests trigger
 
 on:
   #registry_package:
-  workflow_dispatch:
+  pull_request:
+    branches: [development, release-*]
 
 jobs:
   e2e-tests:
