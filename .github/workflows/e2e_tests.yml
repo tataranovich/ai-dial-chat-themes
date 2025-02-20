@@ -15,4 +15,9 @@ jobs:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
           repository: tataranovich/ai-dial-ci # TODO: replace with epam/ai-dial-ci before merge
           event-type: e2e-tests-workflow
-          client-payload: '{"github-app": "${{github.event.repository.name}}", "github-sha": "${{github.sha}}", "gitlab-project-id": "1843"}'
+          client-payload: |-
+            {
+              "github-app": "${{github.event.repository.name}}",
+              "github-sha": "${{github.sha}}",
+              "gitlab-project-id": "1843"
+            }
