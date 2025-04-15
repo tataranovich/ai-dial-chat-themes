@@ -110,3 +110,4 @@ You can customize color palettes in the `colors` property for each object in the
   ]
 }
 ```
+
