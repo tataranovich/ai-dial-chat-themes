@@ -8,7 +8,6 @@ jobs:
   clean:
     name: Delete untagged images
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request }}
     permissions:
       packages: write
     steps:
