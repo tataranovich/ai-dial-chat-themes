@@ -1,13 +1,12 @@
 name: E2E tests trigger
 
 on:
-  #registry_package:
-  pull_request:
-    branches: [development, release-*]
+  registry_package:
 
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
+    if: ${{ github.event.registry_package.package_version.container_metadata.tag.name == 'development' }}
     steps:
       - name: E2E tests
         uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0 # v3.0.0
