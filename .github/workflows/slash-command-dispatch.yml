@@ -21,7 +21,7 @@ jobs:
                 "repository": "tataranovich/ai-dial-ci",
                 "static_args": [
                   "application=${{ github.event.repository.name }}",
-                  "skip-e2e=${{ vars.SKIP_E2E }}"
+                  "skip-e2e=${{ vars.SKIP_E2E == true || contains(github.event.issue.labels.*.name, 'skip-e2e') }}"
                 ]
               }
             ]
