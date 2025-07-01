@@ -21,7 +21,7 @@ jobs:
                 "issue_type": "pull-request",
                 "repository": "tataranovich/ai-dial-ci",
                 "static_args": [
-                  "application=${{ github.event.repository.name }}"
+                  "application=${{ github.event.repository.name }}",
                   "skip-e2e=true"
                 ]
               }
