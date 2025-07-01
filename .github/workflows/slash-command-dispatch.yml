@@ -20,7 +20,8 @@ jobs:
                 "issue_type": "pull-request",
                 "repository": "epam/ai-dial-ci",
                 "static_args": [
-                  "application=${{ github.event.repository.name }}"
+                  "application=${{ github.event.repository.name }}",
+                  "skip-e2e=${{ contains(vars, 'SKIP_E2E') || contains(github.event.issue.labels.*.name, 'skip-e2e') }}"
                 ]
               }
             ]
