@@ -12,7 +12,7 @@ jobs:
         uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0 # v3.0.0
         with:
           token: ${{ secrets.ACTIONS_BOT_TOKEN }}
-          repository: epam/ai-dial-ci
+          repository: tataranovich/ai-dial-ci
           event-type: e2e-tests-workflow
           client-payload: |-
             {
